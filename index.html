@@ -298,6 +298,14 @@
       display: flex; align-items: center; gap: 0.8rem;
       font-size: 0.9rem; color: var(--text);
       margin-bottom: 0.8rem;
+      text-decoration: none;
+    }
+    a.contact-item:hover { color: var(--gold); }
+    a.contact-item:hover .contact-item-icon { background: rgba(201,168,76,0.2); }
+    .social-links-title {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold); margin: 1.5rem 0 0.8rem;
     }
     .contact-item-icon {
       width: 36px; height: 36px;
@@ -576,22 +584,37 @@
       <div class="section-eyebrow">تماس با ما</div>
       <h2>یک قدم تا راه‌حل</h2>
       <p>برای دریافت مشاوره رایگان اولیه با ما تماس بگیرید یا فرم را تکمیل کنید.</p>
-      <div class="contact-item">
+      <a href="tel:09901386754" class="contact-item">
         <div class="contact-item-icon">📞</div>
-        <span>۰۲۱ - XXXX - XXXX</span>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-icon">📧</div>
-        <span>info@atiyeh-alavi.ir</span>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-icon">📍</div>
-        <span>آدرس دفتر موسسه</span>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-icon">🕐</div>
-        <span>شنبه تا چهارشنبه — ۹ تا ۱۷</span>
-      </div>
+        <span>۰۹۹۰۱۳۸۶۷۵۴</span>
+      </a>
+
+      <div class="social-links-title">شبکه‌های اجتماعی</div>
+
+      <a href="https://www.instagram.com/atiye_sazana?igsh=MXg2ZTk2bmF4ZDNyOA%3D%3D&utm_source=qr" target="_blank" class="contact-item">
+        <div class="contact-item-icon">📸</div>
+        <span>اینستاگرام موسسه آتیه‌سازان</span>
+      </a>
+      <a href="https://www.instagram.com/atiye_sazan_alavi_test?igsh=ZzFrczY0c211ajFo&utm_source=qr" target="_blank" class="contact-item">
+        <div class="contact-item-icon">✏️</div>
+        <span>اینستاگرام تست‌زنی</span>
+      </a>
+      <a href="https://www.instagram.com/departeman_maharat_hoghooghi?igsh=dmQ2cGhhbTQyZ2hu&utm_source=qr" target="_blank" class="contact-item">
+        <div class="contact-item-icon">⚖️</div>
+        <span>اینستاگرام مهارت حقوقی</span>
+      </a>
+      <a href="https://t.me/JClPmJTF7rUwN2E0" target="_blank" class="contact-item">
+        <div class="contact-item-icon">✈️</div>
+        <span>کانال تلگرام نکته‌گویی</span>
+      </a>
+      <a href="https://ig.me/j/AbZdPvv64VdOVDcb/" target="_blank" class="contact-item">
+        <div class="contact-item-icon">🔔</div>
+        <span>کانال نکته‌گویی اینستاگرام</span>
+      </a>
+      <a href="https://youtube.com/@atiye_sazan_alavi?si=KyNjJTJovyKZw3Bq" target="_blank" class="contact-item">
+        <div class="contact-item-icon">▶️</div>
+        <span>کانال یوتیوب</span>
+      </a>
     </div>
     <div class="contact-form">
       <div class="form-group">
@@ -618,6 +641,11 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">آتیه‌سازان علوی</div>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
+    <a href="https://www.instagram.com/atiye_sazana?igsh=MXg2ZTk2bmF4ZDNyOA%3D%3D&utm_source=qr" target="_blank" style="color:var(--muted);text-decoration:none;font-size:0.82rem;" title="اینستاگرام موسسه">📸 اینستاگرام</a>
+    <a href="https://t.me/JClPmJTF7rUwN2E0" target="_blank" style="color:var(--muted);text-decoration:none;font-size:0.82rem;" title="تلگرام">✈️ تلگرام</a>
+    <a href="https://youtube.com/@atiye_sazan_alavi?si=KyNjJTJovyKZw3Bq" target="_blank" style="color:var(--muted);text-decoration:none;font-size:0.82rem;" title="یوتیوب">▶️ یوتیوب</a>
+  </div>
   <p>© ۱۴۰۴ موسسه آتیه‌سازان علوی — تمامی حقوق محفوظ است</p>
 </footer>
 
