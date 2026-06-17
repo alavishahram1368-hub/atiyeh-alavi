@@ -256,6 +256,73 @@
     .tip-item h4 { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.3rem; }
     .tip-item p { font-size: 0.85rem; color: var(--muted); font-weight: 300; }
 
+    /* ── QUIZ ── */
+    #quiz { background: var(--bg); }
+    .quiz-subjects {
+      display: flex; gap: 0.7rem; flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .quiz-subject-btn {
+      background: var(--card); color: var(--muted);
+      border: 1px solid var(--border); border-radius: 100px;
+      padding: 0.6rem 1.4rem;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.88rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .quiz-subject-btn:hover { border-color: var(--gold-dim); color: var(--text); }
+    .quiz-subject-btn.active { background: var(--gold); color: #000; border-color: var(--gold); }
+
+    .quiz-set { display: none; }
+    .quiz-set.active { display: block; }
+
+    .quiz-question {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem 1.7rem; margin-bottom: 1.1rem;
+    }
+    .quiz-q-num {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.5rem;
+    }
+    .quiz-q-text { font-size: 0.98rem; font-weight: 600; color: var(--white); margin-bottom: 1.1rem; line-height: 1.6; }
+    .quiz-options { display: flex; flex-direction: column; gap: 0.6rem; }
+    .quiz-option {
+      display: flex; align-items: center; gap: 0.7rem;
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 0.7rem 1rem; cursor: pointer;
+      font-size: 0.88rem; color: var(--text); font-weight: 300;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .quiz-option:hover { border-color: var(--gold-dim); }
+    .quiz-option input[type="radio"] { accent-color: var(--gold); width: 16px; height: 16px; flex-shrink: 0; cursor: pointer; }
+    .quiz-option.correct { border-color: #4CAF7D; background: rgba(76,175,125,0.1); color: var(--text); }
+    .quiz-option.incorrect { border-color: #D9534F; background: rgba(217,83,79,0.1); }
+
+    .quiz-actions { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.5rem; flex-wrap: wrap; }
+    .quiz-submit-btn {
+      background: var(--gold); color: #000; border: none; border-radius: 8px;
+      padding: 0.85rem 2rem; font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s;
+    }
+    .quiz-submit-btn:hover { opacity: 0.85; }
+    .quiz-retry-btn {
+      display: none;
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 0.85rem 1.6rem; font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: border-color 0.2s, color 0.2s;
+    }
+    .quiz-retry-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+    .quiz-result {
+      display: none; margin-top: 1.6rem;
+      background: var(--card); border: 1px solid var(--gold-dim);
+      border-radius: 12px; padding: 2rem; text-align: center;
+    }
+    .quiz-score-num { font-size: 2.6rem; font-weight: 900; color: var(--gold); line-height: 1; }
+    .quiz-score-text { font-size: 0.88rem; color: var(--muted); margin-top: 0.5rem; }
+
     /* ── ABOUT ── */
     #about { background: var(--bg); }
     .about-inner {
@@ -359,6 +426,8 @@
       .about-inner,
       .contact-inner { grid-template-columns: 1fr; }
       .hero-stats { gap: 1.5rem; }
+      .quiz-subjects { gap: 0.5rem; }
+      .quiz-subject-btn { padding: 0.5rem 1rem; font-size: 0.82rem; }
     }
   </style>
 </head>
@@ -370,6 +439,7 @@
   <ul class="nav-links">
     <li><a href="#services">خدمات</a></li>
     <li><a href="#courses">دوره‌ها</a></li>
+    <li><a href="#quiz">تست‌زنی</a></li>
     <li><a href="#tips">نکات حقوقی</a></li>
     <li><a href="#about">درباره ما</a></li>
     <li><a href="#contact">تماس</a></li>
@@ -510,6 +580,345 @@
   </div>
 </section>
 
+<!-- ONLINE QUIZ -->
+<section id="quiz">
+  <div class="section-eyebrow">تست‌زنی آنلاین</div>
+  <div class="section-title">خودتان را محک بزنید</div>
+  <p class="section-sub">برای هر درس ۶ تست از مباحث مهم پاسخ دهید و در پایان پاسخنامه و درصد خود را مشاهده کنید</p>
+
+  <div class="quiz-subjects">
+    <button class="quiz-subject-btn active" data-subject="tejarat" onclick="switchQuizSubject('tejarat')">حقوق تجارت</button>
+    <button class="quiz-subject-btn" data-subject="madani" onclick="switchQuizSubject('madani')">حقوق مدنی</button>
+    <button class="quiz-subject-btn" data-subject="ada" onclick="switchQuizSubject('ada')">آیین دادرسی مدنی</button>
+    <button class="quiz-subject-btn" data-subject="keifari" onclick="switchQuizSubject('keifari')">حقوق کیفری</button>
+  </div>
+
+  <!-- تجارت -->
+  <div class="quiz-set active" id="quiz-tejarat">
+    <form class="quiz-form" id="form-tejarat">
+
+      <div class="quiz-question" data-correct="1">
+        <div class="quiz-q-num">سوال ۱</div>
+        <p class="quiz-q-text">طبق ماده ۱ قانون تجارت، «تاجر» به چه کسی گفته می‌شود؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="tejarat-q1"/><span>کسی که شغل معمولی خود را معاملات تجارتی قرار دهد</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="tejarat-q1"/><span>کسی که دارای کارت بازرگانی باشد</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="tejarat-q1"/><span>کسی که در اداره ثبت شرکت‌ها ثبت‌نام کرده باشد</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="tejarat-q1"/><span>کسی که سهام شرکت سهامی را خریداری کند</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="3">
+        <div class="quiz-q-num">سوال ۲</div>
+        <p class="quiz-q-text">طبق قانون تجارت ایران، شرکت‌های تجارتی چند نوع هستند؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="tejarat-q2"/><span>۵ نوع</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="tejarat-q2"/><span>۶ نوع</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="tejarat-q2"/><span>۷ نوع</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="tejarat-q2"/><span>۸ نوع</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="3">
+        <div class="quiz-q-num">سوال ۳</div>
+        <p class="quiz-q-text">حداقل تعداد سهامداران برای تأسیس شرکت سهامی خاص چند نفر است؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="tejarat-q3"/><span>۱ نفر</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="tejarat-q3"/><span>۲ نفر</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="tejarat-q3"/><span>۳ نفر</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="tejarat-q3"/><span>۵ نفر</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="3">
+        <div class="quiz-q-num">سوال ۴</div>
+        <p class="quiz-q-text">کدام سند تجاری معمولاً وسیله پرداخت فوری است و وعده‌دار شدن آن خلاف ماهیت اصلی آن است؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="tejarat-q4"/><span>برات</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="tejarat-q4"/><span>سفته</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="tejarat-q4"/><span>چک</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="tejarat-q4"/><span>اوراق قرضه</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="1">
+        <div class="quiz-q-num">سوال ۵</div>
+        <p class="quiz-q-text">«ورشکستگی» تاجر نتیجه چه وضعیتی است؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="tejarat-q5"/><span>توقف از تأدیه (پرداخت) دیون و وجوهی که بر عهده اوست</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="tejarat-q5"/><span>کاهش سرمایه ثبتی شرکت</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="tejarat-q5"/><span>تغییر نوع شرکت تجاری</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="tejarat-q5"/><span>انحلال ارادی شرکت توسط شرکا</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="2">
+        <div class="quiz-q-num">سوال ۶</div>
+        <p class="quiz-q-text">حداقل سرمایه برای تأسیس شرکت سهامی عام چقدر است؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="tejarat-q6"/><span>۱,۰۰۰,۰۰۰ ریال</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="tejarat-q6"/><span>۵,۰۰۰,۰۰۰ ریال</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="tejarat-q6"/><span>۱۰۰,۰۰۰ ریال</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="tejarat-q6"/><span>بدون حداقل سرمایه قانونی</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-actions">
+        <button type="button" class="quiz-submit-btn" onclick="gradeQuiz('tejarat')">مشاهده نتیجه و پاسخنامه</button>
+        <button type="button" class="quiz-retry-btn" onclick="resetQuiz('tejarat')">تلاش دوباره</button>
+      </div>
+    </form>
+    <div class="quiz-result" id="result-tejarat">
+      <div class="quiz-score-num"><span id="score-tejarat">۰٪</span></div>
+      <div class="quiz-score-text" id="scoretext-tejarat"></div>
+    </div>
+  </div>
+
+  <!-- مدنی -->
+  <div class="quiz-set" id="quiz-madani">
+    <form class="quiz-form" id="form-madani">
+
+      <div class="quiz-question" data-correct="1">
+        <div class="quiz-q-num">سوال ۱</div>
+        <p class="quiz-q-text">طبق قانون مدنی، سن بلوغ دختران چند سال تمام قمری است؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="madani-q1"/><span>۹ سال تمام قمری</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="madani-q1"/><span>۱۲ سال تمام قمری</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="madani-q1"/><span>۱۵ سال تمام قمری</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="madani-q1"/><span>۱۸ سال تمام قمری</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="4">
+        <div class="quiz-q-num">سوال ۲</div>
+        <p class="quiz-q-text">طبق ماده ۱۹۰ قانون مدنی، کدام مورد جزو شرایط اساسی صحت معامله نیست؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="madani-q2"/><span>قصد طرفین و رضای آنها</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="madani-q2"/><span>اهلیت طرفین معامله</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="madani-q2"/><span>موضوع معین که مورد معامله باشد</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="madani-q2"/><span>ثبت رسمی معامله نزد دفترخانه</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="2">
+        <div class="quiz-q-num">سوال ۳</div>
+        <p class="quiz-q-text">«مالکیت» در حقوق مدنی ایران به چه معناست؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="madani-q3"/><span>حق استفاده موقت از مال دیگری</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="madani-q3"/><span>حقی که به موجب آن شخص می‌تواند در حدود قانون، هر نوع تصرف و انتفاعی از مال خود ببرد</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="madani-q3"/><span>حق اجاره دادن مال به دیگری</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="madani-q3"/><span>حق وثیقه گذاشتن مال نزد بانک</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="1">
+        <div class="quiz-q-num">سوال ۴</div>
+        <p class="quiz-q-text">کدام گروه، وراث طبقه اول ارث محسوب می‌شوند؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="madani-q4"/><span>پدر، مادر، اولاد و اولادِ اولاد</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="madani-q4"/><span>برادر و خواهر</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="madani-q4"/><span>اجداد</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="madani-q4"/><span>عمو و عمه</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="3">
+        <div class="quiz-q-num">سوال ۵</div>
+        <p class="quiz-q-text">عقد نکاح (ازدواج) در حقوق مدنی ایران چه نوع عقدی است؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="madani-q5"/><span>عقدی که نیاز به شاهد ندارد</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="madani-q5"/><span>عقدی جایز و قابل فسخ یک‌طرفه و بدون شرط</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="madani-q5"/><span>عقدی لازم که جز در موارد خاص قانونی قابل فسخ نیست</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="madani-q5"/><span>عقدی که فقط با سند رسمی منعقد می‌شود</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="1">
+        <div class="quiz-q-num">سوال ۶</div>
+        <p class="quiz-q-text">«اتلاف» در حقوق مدنی به چه معناست؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="madani-q6"/><span>از بین بردن مستقیم مال یا منفعت دیگری</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="madani-q6"/><span>ایجاد غیرمستقیم زمینه ورود ضرر (تسبیب)</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="madani-q6"/><span>تقصیر در انجام تعهد قراردادی</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="madani-q6"/><span>فسخ یک‌طرفه قرارداد</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-actions">
+        <button type="button" class="quiz-submit-btn" onclick="gradeQuiz('madani')">مشاهده نتیجه و پاسخنامه</button>
+        <button type="button" class="quiz-retry-btn" onclick="resetQuiz('madani')">تلاش دوباره</button>
+      </div>
+    </form>
+    <div class="quiz-result" id="result-madani">
+      <div class="quiz-score-num"><span id="score-madani">۰٪</span></div>
+      <div class="quiz-score-text" id="scoretext-madani"></div>
+    </div>
+  </div>
+
+  <!-- آیین دادرسی مدنی -->
+  <div class="quiz-set" id="quiz-ada">
+    <form class="quiz-form" id="form-ada">
+
+      <div class="quiz-question" data-correct="2">
+        <div class="quiz-q-num">سوال ۱</div>
+        <p class="quiz-q-text">به‌طور کلی، دادگاه صالح برای رسیدگی به دعاوی مدنی کدام دادگاه است؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="ada-q1"/><span>دادگاه محل وقوع جرم</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="ada-q1"/><span>دادگاه محل اقامت خوانده</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="ada-q1"/><span>دادگاه محل اقامت خواهان</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="ada-q1"/><span>دادگاه محل تنظیم قرارداد</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="2">
+        <div class="quiz-q-num">سوال ۲</div>
+        <p class="quiz-q-text">مهلت تجدیدنظرخواهی از احکام دادگاه‌های بدوی برای اشخاص مقیم ایران چند روز از تاریخ ابلاغ است؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="ada-q2"/><span>۱۰ روز</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="ada-q2"/><span>۲۰ روز</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="ada-q2"/><span>۳۰ روز</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="ada-q2"/><span>۲ ماه</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="3">
+        <div class="quiz-q-num">سوال ۳</div>
+        <p class="quiz-q-text">مهلت تجدیدنظرخواهی برای اشخاص مقیم خارج از کشور چقدر است؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="ada-q3"/><span>۲۰ روز</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="ada-q3"/><span>۱ ماه</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="ada-q3"/><span>۲ ماه</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="ada-q3"/><span>۳ ماه</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="2">
+        <div class="quiz-q-num">سوال ۴</div>
+        <p class="quiz-q-text">دادخواست برای آنکه قابل ثبت و رسیدگی باشد، حداقل باید دارای چه عناصری باشد؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="ada-q4"/><span>فقط امضای خواهان</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="ada-q4"/><span>مشخصات طرفین، تعیین خواسته و دلایل و منضمات دادخواست</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="ada-q4"/><span>فقط مهر وکیل دادگستری</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="ada-q4"/><span>تأیید قبلی شورای حل اختلاف</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="1">
+        <div class="quiz-q-num">سوال ۵</div>
+        <p class="quiz-q-text">«اعتراض ثالث» در آیین دادرسی مدنی در چه زمانی مطرح می‌شود؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="ada-q5"/><span>زمانی که شخصی خارج از دعوا، رأی صادره را مخل حقوق خود بداند</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="ada-q5"/><span>زمانی که خوانده به اصل حکم اعتراض دارد</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="ada-q5"/><span>زمانی که خواهان دادخواست خود را مسترد می‌کند</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="ada-q5"/><span>زمانی که دادگاه صادرکننده رأی صالح نبوده است</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="2">
+        <div class="quiz-q-num">سوال ۶</div>
+        <p class="quiz-q-text">اجرای حکم دادگاه پس از قطعیت آن بر عهده کدام مرجع است؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="ada-q6"/><span>اداره ثبت اسناد و املاک</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="ada-q6"/><span>واحد اجرای احکام مدنی دادگاه</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="ada-q6"/><span>نیروی انتظامی</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="ada-q6"/><span>شورای حل اختلاف</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-actions">
+        <button type="button" class="quiz-submit-btn" onclick="gradeQuiz('ada')">مشاهده نتیجه و پاسخنامه</button>
+        <button type="button" class="quiz-retry-btn" onclick="resetQuiz('ada')">تلاش دوباره</button>
+      </div>
+    </form>
+    <div class="quiz-result" id="result-ada">
+      <div class="quiz-score-num"><span id="score-ada">۰٪</span></div>
+      <div class="quiz-score-text" id="scoretext-ada"></div>
+    </div>
+  </div>
+
+  <!-- کیفری -->
+  <div class="quiz-set" id="quiz-keifari">
+    <form class="quiz-form" id="form-keifari">
+
+      <div class="quiz-question" data-correct="3">
+        <div class="quiz-q-num">سوال ۱</div>
+        <p class="quiz-q-text">مجازات‌ها در قانون مجازات اسلامی به چند دسته اصلی تقسیم می‌شوند؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="keifari-q1"/><span>۲ دسته</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="keifari-q1"/><span>۳ دسته</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="keifari-q1"/><span>۴ دسته: حدود، قصاص، دیات و تعزیرات</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="keifari-q1"/><span>۵ دسته</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="1">
+        <div class="quiz-q-num">سوال ۲</div>
+        <p class="quiz-q-text">«رکن قانونی جرم» به چه معناست؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="keifari-q2"/><span>وجود قانونی که عمل را جرم‌انگاری کرده و برای آن مجازات تعیین کرده باشد</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="keifari-q2"/><span>قصد و اراده مرتکب در ارتکاب جرم</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="keifari-q2"/><span>انجام فیزیکی رفتار مجرمانه</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="keifari-q2"/><span>وجود شاکی خصوصی</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="2">
+        <div class="quiz-q-num">سوال ۳</div>
+        <p class="quiz-q-text">سن مسئولیت کیفری برای پسران، معادل سن بلوغ شرعی، چند سال تمام قمری است؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="keifari-q3"/><span>۹ سال تمام قمری</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="keifari-q3"/><span>۱۵ سال تمام قمری</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="keifari-q3"/><span>۱۸ سال تمام قمری</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="keifari-q3"/><span>۲۱ سال تمام قمری</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="2">
+        <div class="quiz-q-num">سوال ۴</div>
+        <p class="quiz-q-text">دفاع مشروع زمانی پذیرفته می‌شود که دفاع متناسب با چه چیزی باشد؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="keifari-q4"/><span>خواسته شخص مدافع</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="keifari-q4"/><span>حمله و خطر موجود</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="keifari-q4"/><span>مجازات قانونی همان جرم</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="keifari-q4"/><span>نظر شخصی قاضی</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="2">
+        <div class="quiz-q-num">سوال ۵</div>
+        <p class="quiz-q-text">«تکرار جرم» به چه وضعیتی گفته می‌شود؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="keifari-q5"/><span>ارتکاب چند جرم به‌طور هم‌زمان</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="keifari-q5"/><span>ارتکاب جرم جدید پس از محکومیت قطعی و اجرای مجازات جرم قبلی</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="keifari-q5"/><span>شرکت چند نفر در ارتکاب یک جرم</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="keifari-q5"/><span>تخفیف مجازات به دلیل وضعیت خاص متهم</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-correct="2">
+        <div class="quiz-q-num">سوال ۶</div>
+        <p class="quiz-q-text">«مرور زمان» در جرایم تعزیری به چه معناست؟</p>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="1"><input type="radio" name="keifari-q6"/><span>کاهش مجازات به دلیل کهولت سن متهم</span></label>
+          <label class="quiz-option" data-val="2"><input type="radio" name="keifari-q6"/><span>سپری شدن مدت زمان قانونی که موجب موقوف ماندن تعقیب، اجرا یا مجازات می‌شود</span></label>
+          <label class="quiz-option" data-val="3"><input type="radio" name="keifari-q6"/><span>تبدیل مجازات حبس به جزای نقدی</span></label>
+          <label class="quiz-option" data-val="4"><input type="radio" name="keifari-q6"/><span>تعلیق اجرای حکم به درخواست محکوم</span></label>
+        </div>
+      </div>
+
+      <div class="quiz-actions">
+        <button type="button" class="quiz-submit-btn" onclick="gradeQuiz('keifari')">مشاهده نتیجه و پاسخنامه</button>
+        <button type="button" class="quiz-retry-btn" onclick="resetQuiz('keifari')">تلاش دوباره</button>
+      </div>
+    </form>
+    <div class="quiz-result" id="result-keifari">
+      <div class="quiz-score-num"><span id="score-keifari">۰٪</span></div>
+      <div class="quiz-score-text" id="scoretext-keifari"></div>
+    </div>
+  </div>
+
+</section>
+
 <!-- LEGAL TIPS -->
 <section id="tips">
   <div class="section-eyebrow">نکات حقوقی</div>
@@ -648,6 +1057,70 @@
   </div>
   <p>© ۱۴۰۴ موسسه آتیه‌سازان علوی — تمامی حقوق محفوظ است</p>
 </footer>
+<script>
+  function switchQuizSubject(subjectId) {
+    document.querySelectorAll('.quiz-subject-btn').forEach(function(b){ b.classList.remove('active'); });
+    document.querySelector('.quiz-subject-btn[data-subject="' + subjectId + '"]').classList.add('active');
+    document.querySelectorAll('.quiz-set').forEach(function(s){ s.classList.remove('active'); });
+    document.getElementById('quiz-' + subjectId).classList.add('active');
+  }
+
+  function gradeQuiz(subjectId) {
+    var form = document.getElementById('form-' + subjectId);
+    var questions = form.querySelectorAll('.quiz-question');
+    var correctCount = 0;
+
+    questions.forEach(function(q) {
+      var correctVal = q.getAttribute('data-correct');
+      var options = q.querySelectorAll('.quiz-option');
+      var selectedInput = q.querySelector('input[type="radio"]:checked');
+
+      options.forEach(function(opt) {
+        opt.classList.remove('correct', 'incorrect');
+        opt.querySelector('input').disabled = true;
+        if (opt.getAttribute('data-val') === correctVal) {
+          opt.classList.add('correct');
+        }
+      });
+
+      if (selectedInput) {
+        var selectedLabel = selectedInput.closest('.quiz-option');
+        if (selectedInput.value !== undefined && selectedLabel.getAttribute('data-val') === correctVal) {
+          correctCount++;
+        } else {
+          selectedLabel.classList.add('incorrect');
+        }
+      }
+    });
+
+    var total = questions.length;
+    var percent = Math.round((correctCount / total) * 100);
+
+    document.getElementById('score-' + subjectId).textContent = percent.toLocaleString('fa-IR') + '٪';
+    document.getElementById('scoretext-' + subjectId).textContent =
+      correctCount.toLocaleString('fa-IR') + ' پاسخ صحیح از ' + total.toLocaleString('fa-IR') + ' سوال — پاسخ‌های درست با رنگ سبز و پاسخ نادرست شما با رنگ قرمز مشخص شده است';
+
+    var resultDiv = document.getElementById('result-' + subjectId);
+    resultDiv.style.display = 'block';
+
+    form.querySelector('.quiz-submit-btn').style.display = 'none';
+    form.querySelector('.quiz-retry-btn').style.display = 'inline-block';
+
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function resetQuiz(subjectId) {
+    var form = document.getElementById('form-' + subjectId);
+    form.reset();
+    form.querySelectorAll('.quiz-option').forEach(function(opt) {
+      opt.classList.remove('correct', 'incorrect');
+      opt.querySelector('input').disabled = false;
+    });
+    document.getElementById('result-' + subjectId).style.display = 'none';
+    form.querySelector('.quiz-submit-btn').style.display = 'inline-block';
+    form.querySelector('.quiz-retry-btn').style.display = 'none';
+  }
+</script>
 
 </body>
 </html>
