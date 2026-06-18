@@ -608,6 +608,226 @@
       .quiz-subjects { gap: 0.5rem; }
       .quiz-subject-btn { padding: 0.5rem 1rem; font-size: 0.82rem; }
     }
+    /* ── AI LEGAL ASSISTANT ── */
+    #ai-legal { background: var(--surface); }
+    .ai-chat-wrapper {
+      max-width: 820px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .ai-chat-header {
+      background: linear-gradient(135deg, rgba(201,168,76,0.15) 0%, rgba(201,168,76,0.05) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 1.4rem 1.8rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .ai-chat-avatar {
+      width: 46px; height: 46px;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid var(--gold-dim);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0;
+    }
+    .ai-chat-header-info h3 {
+      font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.15rem;
+    }
+    .ai-chat-header-info p { font-size: 0.78rem; color: var(--muted); font-weight: 300; }
+    .ai-status-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #4CAF7D; display: inline-block;
+      margin-left: 0.4rem; animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity: 1; } 50% { opacity: 0.4; }
+    }
+    .ai-messages {
+      height: 420px; overflow-y: auto;
+      padding: 1.5rem 1.8rem;
+      display: flex; flex-direction: column; gap: 1rem;
+      scroll-behavior: smooth;
+    }
+    .ai-messages::-webkit-scrollbar { width: 4px; }
+    .ai-messages::-webkit-scrollbar-track { background: transparent; }
+    .ai-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    .ai-msg {
+      display: flex; gap: 0.75rem; align-items: flex-start;
+      animation: fadeInUp 0.3s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .ai-msg.user { flex-direction: row-reverse; }
+    .ai-msg-icon {
+      width: 34px; height: 34px; border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .ai-msg.bot .ai-msg-icon { background: rgba(201,168,76,0.12); border: 1px solid var(--gold-dim); }
+    .ai-msg.user .ai-msg-icon { background: rgba(201,168,76,0.2); }
+    .ai-msg-bubble {
+      max-width: 75%; padding: 0.85rem 1.1rem;
+      border-radius: 12px; font-size: 0.9rem; line-height: 1.7; font-weight: 300;
+    }
+    .ai-msg.bot .ai-msg-bubble {
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); border-top-right-radius: 4px;
+    }
+    .ai-msg.user .ai-msg-bubble {
+      background: rgba(201,168,76,0.12); border: 1px solid var(--gold-dim);
+      color: var(--text); border-top-left-radius: 4px;
+    }
+    .ai-typing { display: flex; gap: 5px; align-items: center; padding: 0.3rem 0; }
+    .ai-typing span {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--gold-dim); display: inline-block;
+      animation: typing-bounce 1.2s infinite;
+    }
+    .ai-typing span:nth-child(2) { animation-delay: 0.2s; }
+    .ai-typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing-bounce {
+      0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-6px); }
+    }
+    .ai-suggestions {
+      padding: 0 1.8rem 1rem;
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .ai-suggestion-chip {
+      background: transparent; color: var(--gold);
+      border: 1px solid var(--gold-dim); border-radius: 100px;
+      padding: 0.35rem 0.9rem;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.78rem; font-weight: 500;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .ai-suggestion-chip:hover { background: rgba(201,168,76,0.1); }
+    .ai-input-area {
+      border-top: 1px solid var(--border);
+      padding: 1.2rem 1.8rem;
+      display: flex; gap: 0.8rem; align-items: flex-end;
+    }
+    .ai-input {
+      flex: 1; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.75rem 1rem;
+      color: var(--text); font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.9rem; outline: none; resize: none;
+      min-height: 46px; max-height: 120px; line-height: 1.6;
+      transition: border-color 0.2s;
+    }
+    .ai-input:focus { border-color: var(--gold-dim); }
+    .ai-input::placeholder { color: var(--muted); }
+    .ai-send-btn {
+      width: 46px; height: 46px; border-radius: 10px;
+      background: var(--gold); border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: opacity 0.2s, transform 0.15s;
+      flex-shrink: 0; font-size: 1.1rem;
+    }
+    .ai-send-btn:hover { opacity: 0.85; transform: scale(1.05); }
+    .ai-send-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+    .ai-disclaimer {
+      text-align: center; font-size: 0.72rem;
+      color: var(--muted); padding: 0.6rem 1.8rem 1rem;
+    }
+
+    /* ── FLOATING CHAT BUTTON ── */
+    .float-chat-btn {
+      position: fixed; bottom: 2rem; left: 2rem; z-index: 200;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: var(--gold); border: none;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .float-chat-btn:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(201,168,76,0.55); }
+    .float-chat-btn .float-tooltip {
+      position: absolute; left: 70px; bottom: 50%;
+      transform: translateY(50%);
+      background: var(--card); border: 1px solid var(--border);
+      color: var(--text); font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.8rem; font-weight: 600;
+      padding: 0.4rem 0.9rem; border-radius: 8px;
+      white-space: nowrap; pointer-events: none;
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .float-chat-btn:hover .float-tooltip { opacity: 1; }
+
+    /* Float panel */
+    .float-chat-panel {
+      position: fixed; bottom: 5.5rem; left: 2rem; z-index: 200;
+      width: 370px; max-height: 520px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+      display: none; flex-direction: column;
+      animation: slideUp 0.25s ease;
+    }
+    .float-chat-panel.open { display: flex; }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .float-panel-header {
+      background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .float-panel-header-left { display: flex; align-items: center; gap: 0.7rem; }
+    .float-panel-avatar {
+      width: 36px; height: 36px; border-radius: 9px;
+      background: rgba(201,168,76,0.12); border: 1px solid var(--gold-dim);
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+    }
+    .float-panel-header h4 { font-size: 0.9rem; font-weight: 700; color: var(--white); }
+    .float-panel-header p { font-size: 0.72rem; color: var(--muted); }
+    .float-close-btn {
+      background: transparent; border: none; color: var(--muted);
+      font-size: 1.1rem; cursor: pointer; padding: 0.2rem;
+      transition: color 0.2s;
+    }
+    .float-close-btn:hover { color: var(--text); }
+    .float-messages {
+      flex: 1; overflow-y: auto; padding: 1rem 1.2rem;
+      display: flex; flex-direction: column; gap: 0.8rem;
+      scroll-behavior: smooth;
+    }
+    .float-messages::-webkit-scrollbar { width: 3px; }
+    .float-messages::-webkit-scrollbar-thumb { background: var(--border); }
+    .float-input-area {
+      border-top: 1px solid var(--border);
+      padding: 0.9rem 1.2rem;
+      display: flex; gap: 0.6rem; align-items: center;
+    }
+    .float-input {
+      flex: 1; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 0.6rem 0.85rem;
+      color: var(--text); font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.85rem; outline: none;
+      transition: border-color 0.2s;
+    }
+    .float-input:focus { border-color: var(--gold-dim); }
+    .float-input::placeholder { color: var(--muted); }
+    .float-send-btn {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: var(--gold); border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1rem; flex-shrink: 0;
+      transition: opacity 0.2s;
+    }
+    .float-send-btn:hover { opacity: 0.85; }
+    .float-send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    @media (max-width: 480px) {
+      .float-chat-panel { width: calc(100vw - 2rem); left: 1rem; bottom: 5rem; }
+      .float-chat-btn { left: 1rem; }
+    }
   </style>
 </head>
 <body>
@@ -623,6 +843,7 @@
     <li><a href="#tips">نکات حقوقی</a></li>
     <li><a href="#advisory">نکات مشاوره‌ای</a></li>
     <li><a href="#fields">گرایش‌های حقوق</a></li>
+    <li><a href="#ai-legal">دستیار هوشمند</a></li>
     <li><a href="#about">درباره ما</a></li>
     <li><a href="#contact">تماس</a></li>
   </ul>
@@ -1258,6 +1479,41 @@
   </div>
 </section>
 
+<!-- AI LEGAL ASSISTANT SECTION -->
+<section id="ai-legal">
+  <div class="section-eyebrow">دستیار هوشمند حقوقی</div>
+  <div class="section-title">سوال حقوقی دارید؟</div>
+  <p class="section-sub">دستیار هوش مصنوعی موسسه آتیه‌سازان علوی — پاسخ تخصصی به سوالات حقوقی شما</p>
+
+  <div class="ai-chat-wrapper">
+    <div class="ai-chat-header">
+      <div class="ai-chat-avatar">⚖️</div>
+      <div class="ai-chat-header-info">
+        <h3>دستیار حقوقی آتیه‌سازان <span class="ai-status-dot"></span></h3>
+        <p>هوش مصنوعی تخصصی در حقوق مدنی، جزا و تجارت</p>
+      </div>
+    </div>
+    <div class="ai-messages" id="main-messages">
+      <div class="ai-msg bot">
+        <div class="ai-msg-icon">⚖️</div>
+        <div class="ai-msg-bubble">سلام! من دستیار حقوقی موسسه آتیه‌سازان علوی هستم. می‌توانم در زمینه حقوق مدنی، جزا، تجارت، خانواده و سایر مباحث حقوقی راهنمایی‌تان کنم. سوال خود را بنویسید.</div>
+      </div>
+    </div>
+    <div class="ai-suggestions" id="main-suggestions">
+      <button class="ai-suggestion-chip" onclick="mainSendSuggestion(this)">شرایط طلاق چیست؟</button>
+      <button class="ai-suggestion-chip" onclick="mainSendSuggestion(this)">دیه در قانون چیست؟</button>
+      <button class="ai-suggestion-chip" onclick="mainSendSuggestion(this)">قرارداد اجاره چه شرایطی دارد؟</button>
+      <button class="ai-suggestion-chip" onclick="mainSendSuggestion(this)">چک بلامحل چه مجازاتی دارد؟</button>
+    </div>
+    <div class="ai-input-area">
+      <textarea class="ai-input" id="main-input" placeholder="سوال حقوقی خود را بنویسید..." rows="1"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();mainSend();}"></textarea>
+      <button class="ai-send-btn" id="main-send-btn" onclick="mainSend()">➤</button>
+    </div>
+    <div class="ai-disclaimer">⚠️ پاسخ‌ها جنبه اطلاعاتی دارند و جایگزین مشاوره حقوقی رسمی نمی‌شوند.</div>
+  </div>
+</section>
+
 <!-- ABOUT -->
 <section id="about">
   <div class="about-inner">
@@ -1423,7 +1679,165 @@
     document.querySelectorAll('.advisory-panel').forEach(function(p){ p.classList.remove('active'); });
     document.getElementById(tabId).classList.add('active');
   }
+
+  /* ── AI LEGAL ASSISTANT ── */
+  var SYSTEM_PROMPT = 'شما دستیار حقوقی تخصصی موسسه آتیه‌سازان علوی هستید. به سوالات حقوقی با دقت، تخصص و به زبان فارسی پاسخ می‌دهید. حوزه تخصصی شما حقوق مدنی، جزا، تجارت و خانواده ایران است. پاسخ‌ها را واضح، ساختارمند و کاربردی بنویسید. در انتها یادآوری کنید که برای مشاوره رسمی با موسسه آتیه‌سازان با شماره ۰۹۹۰۱۳۸۶۷۵۴ تماس بگیرند.';
+
+  var mainHistory = [];
+  var floatHistory = [];
+
+  async function callAI(history) {
+    var response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        system: SYSTEM_PROMPT,
+        messages: history
+      })
+    });
+    var data = await response.json();
+    return data.content && data.content[0] ? data.content[0].text : 'خطا در دریافت پاسخ. لطفاً دوباره تلاش کنید.';
+  }
+
+  function addMessage(container, role, text) {
+    var isBot = role === 'bot';
+    var isFloat = container.id === 'float-messages';
+    var size = isFloat ? '30px' : '34px';
+    var fontSize = isFloat ? '0.9rem' : '1rem';
+    var radius = isFloat ? '8px' : '9px';
+    var div = document.createElement('div');
+    div.className = 'ai-msg ' + role;
+    div.innerHTML =
+      '<div class="ai-msg-icon" style="width:' + size + ';height:' + size + ';font-size:' + fontSize + ';background:rgba(201,168,76,' + (isBot ? '0.12' : '0.2') + ');' + (isBot ? 'border:1px solid var(--gold-dim);' : '') + 'border-radius:' + radius + ';display:flex;align-items:center;justify-content:center;flex-shrink:0;">' + (isBot ? '⚖️' : '👤') + '</div>' +
+      '<div class="ai-msg-bubble">' + text.replace(/\n/g, '<br>') + '</div>';
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  function addTyping(container) {
+    var isFloat = container.id === 'float-messages';
+    var size = isFloat ? '30px' : '34px';
+    var fontSize = isFloat ? '0.9rem' : '1rem';
+    var radius = isFloat ? '8px' : '9px';
+    var div = document.createElement('div');
+    div.className = 'ai-msg bot';
+    div.id = 'typing-' + container.id;
+    div.innerHTML =
+      '<div class="ai-msg-icon" style="width:' + size + ';height:' + size + ';font-size:' + fontSize + ';background:rgba(201,168,76,0.12);border:1px solid var(--gold-dim);border-radius:' + radius + ';display:flex;align-items:center;justify-content:center;flex-shrink:0;">⚖️</div>' +
+      '<div class="ai-msg-bubble"><div class="ai-typing"><span></span><span></span><span></span></div></div>';
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  function removeTyping(containerId) {
+    var el = document.getElementById('typing-' + containerId);
+    if (el) el.remove();
+  }
+
+  /* MAIN SECTION */
+  async function mainSend() {
+    var input = document.getElementById('main-input');
+    var text = input.value.trim();
+    if (!text) return;
+    var container = document.getElementById('main-messages');
+    var btn = document.getElementById('main-send-btn');
+    var sugg = document.getElementById('main-suggestions');
+    if (sugg) sugg.style.display = 'none';
+    addMessage(container, 'user', text);
+    mainHistory.push({ role: 'user', content: text });
+    input.value = ''; input.style.height = 'auto';
+    btn.disabled = true;
+    addTyping(container);
+    try {
+      var reply = await callAI(mainHistory);
+      removeTyping('main-messages');
+      addMessage(container, 'bot', reply);
+      mainHistory.push({ role: 'assistant', content: reply });
+    } catch(e) {
+      removeTyping('main-messages');
+      addMessage(container, 'bot', 'خطا در ارتباط با سرور. لطفاً دوباره تلاش کنید.');
+    }
+    btn.disabled = false;
+  }
+
+  function mainSendSuggestion(chip) {
+    document.getElementById('main-input').value = chip.textContent;
+    mainSend();
+  }
+
+  document.getElementById('main-input').addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+  });
+
+  /* FLOAT PANEL */
+  var floatOpen = false;
+  function toggleFloatChat() {
+    floatOpen = !floatOpen;
+    var panel = document.getElementById('float-panel');
+    if (floatOpen) {
+      panel.classList.add('open');
+      document.getElementById('float-input').focus();
+    } else {
+      panel.classList.remove('open');
+    }
+  }
+
+  async function floatSend() {
+    var input = document.getElementById('float-input');
+    var text = input.value.trim();
+    if (!text) return;
+    var container = document.getElementById('float-messages');
+    var btn = document.getElementById('float-send-btn');
+    addMessage(container, 'user', text);
+    floatHistory.push({ role: 'user', content: text });
+    input.value = '';
+    btn.disabled = true;
+    addTyping(container);
+    try {
+      var reply = await callAI(floatHistory);
+      removeTyping('float-messages');
+      addMessage(container, 'bot', reply);
+      floatHistory.push({ role: 'assistant', content: reply });
+    } catch(e) {
+      removeTyping('float-messages');
+      addMessage(container, 'bot', 'خطا در ارتباط با سرور. لطفاً دوباره تلاش کنید.');
+    }
+    btn.disabled = false;
+  }
 </script>
+
+<!-- FLOATING CHAT BUTTON -->
+<button class="float-chat-btn" onclick="toggleFloatChat()" title="دستیار حقوقی">
+  ⚖️
+  <span class="float-tooltip">دستیار حقوقی هوشمند</span>
+</button>
+
+<div class="float-chat-panel" id="float-panel">
+  <div class="float-panel-header">
+    <div class="float-panel-header-left">
+      <div class="float-panel-avatar">⚖️</div>
+      <div>
+        <h4>دستیار آتیه‌سازان <span class="ai-status-dot"></span></h4>
+        <p>آماده پاسخگویی</p>
+      </div>
+    </div>
+    <button class="float-close-btn" onclick="toggleFloatChat()">✕</button>
+  </div>
+  <div class="float-messages" id="float-messages">
+    <div class="ai-msg bot">
+      <div class="ai-msg-icon" style="width:30px;height:30px;font-size:0.9rem;background:rgba(201,168,76,0.12);border:1px solid var(--gold-dim);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">⚖️</div>
+      <div class="ai-msg-bubble">سلام! سوال حقوقی‌تان را بپرسید.</div>
+    </div>
+  </div>
+  <div class="float-input-area">
+    <input class="float-input" id="float-input" type="text" placeholder="سوال حقوقی..."
+      onkeydown="if(event.key==='Enter')floatSend()"/>
+    <button class="float-send-btn" id="float-send-btn" onclick="floatSend()">➤</button>
+  </div>
+</div>
 
 </body>
 </html>
