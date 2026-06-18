@@ -323,8 +323,57 @@
     .quiz-score-num { font-size: 2.6rem; font-weight: 900; color: var(--gold); line-height: 1; }
     .quiz-score-text { font-size: 0.88rem; color: var(--muted); margin-top: 0.5rem; }
 
+    /* ── LEGAL MOVIES ── */
+    #movies { background: var(--bg); }
+    .movies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+    }
+    .movie-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.8rem;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .movie-card::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 80px; height: 80px;
+      background: radial-gradient(circle at top right, rgba(201,168,76,0.08), transparent 70%);
+    }
+    .movie-card:hover { border-color: var(--gold-dim); transform: translateY(-4px); }
+    .movie-clapper {
+      font-size: 2rem; margin-bottom: 1rem;
+      display: block; line-height: 1;
+    }
+    .movie-card h3 {
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--white); margin-bottom: 0.8rem;
+      line-height: 1.4;
+    }
+    .movie-card p {
+      font-size: 0.87rem; color: var(--muted);
+      font-weight: 300; line-height: 1.7;
+      margin-bottom: 0.6rem;
+    }
+    .movie-card p:last-child { margin-bottom: 0; }
+    .movie-badge {
+      display: inline-block;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(201,168,76,0.1);
+      padding: 0.2rem 0.65rem;
+      border-radius: 100px;
+      margin-bottom: 0.9rem;
+    }
+
     /* ── ABOUT ── */
-    #about { background: var(--bg); }
+    #about { background: var(--surface); }
     .about-inner {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 4rem; align-items: center; max-width: 1000px;
@@ -354,7 +403,7 @@
     .value-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
 
     /* ── CONTACT ── */
-    #contact { background: var(--surface); }
+    #contact { background: var(--bg); }
     .contact-inner {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 3rem; max-width: 900px;
@@ -440,6 +489,7 @@
     <li><a href="#services">خدمات</a></li>
     <li><a href="#courses">دوره‌ها</a></li>
     <li><a href="#quiz">تست‌زنی</a></li>
+    <li><a href="#movies">فیلم‌های حقوقی</a></li>
     <li><a href="#tips">نکات حقوقی</a></li>
     <li><a href="#about">درباره ما</a></li>
     <li><a href="#contact">تماس</a></li>
@@ -1137,6 +1187,56 @@
     </div>
   </div>
 
+</section>
+
+<!-- LEGAL MOVIES -->
+<section id="movies">
+  <div class="section-eyebrow">سینما و حقوق</div>
+  <div class="section-title">فیلم‌های حقوقی پیشنهادی</div>
+  <p class="section-sub">این فیلم‌ها نه‌تنها سرگرم‌کننده‌اند، بلکه دریچه‌ای عملی به دنیای حقوق، دادگاه و اخلاق حقوقی هستند</p>
+  <div class="movies-grid">
+
+    <div class="movie-card">
+      <span class="movie-clapper">🎬</span>
+      <div class="movie-badge">دفاع کیفری</div>
+      <h3>The Lincoln Lawyer</h3>
+      <p>وکیل پرونده‌های جنایی که متوجه می‌شود موکلش آن‌قدرها هم بی‌گناه نیست.</p>
+      <p>پر از چالش‌های اخلاقی و حقوقی. مناسب برای آشنایی با دفاع کیفری.</p>
+    </div>
+
+    <div class="movie-card">
+      <span class="movie-clapper">🎬</span>
+      <div class="movie-badge">محاکمه نظامی</div>
+      <h3>A Few Good Men</h3>
+      <p>درباره محاکمه چند نظامی آمریکایی. یکی از معروف‌ترین صحنه‌های دادگاه تاریخ سینما را دارد.</p>
+      <p>دیالوگ‌های حقوقی فوق‌العاده.</p>
+    </div>
+
+    <div class="movie-card">
+      <span class="movie-clapper">🎬</span>
+      <div class="movie-badge">درام حقوقی</div>
+      <h3>The Judge</h3>
+      <p>وکیلی موفق به زادگاهش برمی‌گردد و باید از پدرش که قاضی است دفاع کند.</p>
+      <p>ترکیبی از پرونده حقوقی و درام خانوادگی.</p>
+    </div>
+
+    <div class="movie-card">
+      <span class="movie-clapper">🎬</span>
+      <div class="movie-badge">هیجان‌انگیز حقوقی</div>
+      <h3>Primal Fear</h3>
+      <p>وکیلی مشهور دفاع از جوانی متهم به قتل یک اسقف را می‌پذیرد.</p>
+      <p>یکی از بهترین پایان‌بندی‌های غافلگیرکننده سینمای حقوقی.</p>
+    </div>
+
+    <div class="movie-card">
+      <span class="movie-clapper">🎬</span>
+      <div class="movie-badge">کلاسیک — واجب‌الدید</div>
+      <h3>12 Angry Men</h3>
+      <p>تقریباً تمام فیلم داخل اتاق هیئت منصفه می‌گذرد. شاهکار استدلال، تحلیل ادله و کشف حقیقت.</p>
+      <p>برای دانشجویان حقوق تقریباً واجب است.</p>
+    </div>
+
+  </div>
 </section>
 
 <!-- LEGAL TIPS -->
