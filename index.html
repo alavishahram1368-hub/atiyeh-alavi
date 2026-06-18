@@ -372,8 +372,72 @@
       margin-bottom: 0.9rem;
     }
 
+    /* ── ADVISORY TIPS (NEW) ── */
+    #advisory { background: var(--surface); }
+    .advisory-tabs {
+      display: flex; gap: 0.7rem; flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .advisory-tab-btn {
+      background: var(--card); color: var(--muted);
+      border: 1px solid var(--border); border-radius: 100px;
+      padding: 0.6rem 1.6rem;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .advisory-tab-btn:hover { border-color: var(--gold-dim); color: var(--text); }
+    .advisory-tab-btn.active { background: var(--gold); color: #000; border-color: var(--gold); }
+
+    .advisory-panel { display: none; }
+    .advisory-panel.active { display: block; }
+
+    .advisory-intro {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-right: 3px solid var(--gold);
+      border-radius: 10px;
+      padding: 1.4rem 1.8rem;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.9;
+      max-width: 820px;
+    }
+    .advisory-list { display: flex; flex-direction: column; gap: 1rem; max-width: 820px; }
+    .advisory-item {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem 1.6rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .advisory-item:hover { border-color: var(--gold-dim); transform: translateX(-3px); }
+    .advisory-icon {
+      width: 42px; height: 42px; flex-shrink: 0;
+      background: rgba(201,168,76,0.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .advisory-body { flex: 1; }
+    .advisory-item h4 { font-size: 0.97rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
+    .advisory-item p { font-size: 0.86rem; color: var(--muted); font-weight: 300; line-height: 1.8; }
+    .advisory-tag {
+      display: inline-block;
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      background: rgba(201,168,76,0.1);
+      padding: 0.18rem 0.6rem;
+      border-radius: 100px;
+      margin-bottom: 0.5rem;
+    }
+
     /* ── ABOUT ── */
-    #about { background: var(--surface); }
+    #about { background: var(--bg); }
     .about-inner {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 4rem; align-items: center; max-width: 1000px;
@@ -403,7 +467,7 @@
     .value-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
 
     /* ── CONTACT ── */
-    #contact { background: var(--bg); }
+    #contact { background: var(--surface); }
     .contact-inner {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 3rem; max-width: 900px;
@@ -491,6 +555,7 @@
     <li><a href="#quiz">تست‌زنی</a></li>
     <li><a href="#movies">فیلم‌های حقوقی</a></li>
     <li><a href="#tips">نکات حقوقی</a></li>
+    <li><a href="#advisory">نکات مشاوره‌ای</a></li>
     <li><a href="#about">درباره ما</a></li>
     <li><a href="#contact">تماس</a></li>
   </ul>
@@ -499,25 +564,25 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">موسسه آموزشی و مشاوره حقوقی</div>
-  <h1>آینده‌ای مطمئن با<br/><em>مشاوره حقوقی</em> تخصصی</h1>
-  <p>آموزش، مشاوره و برنامه‌ریزی حقوقی با بالاترین استانداردهای حرفه‌ای — برای افراد و کسب‌وکارها</p>
+  <div class="hero-badge">موسسه آتیه‌سازان علوی</div>
+  <h1>راهنمای <em>تخصصی</em> حقوق<br/>در دستان متخصصین</h1>
+  <p>خدمات حقوقی، آموزش و مشاوره تخصصی با بیش از ۱۵ سال تجربه در حوزه‌های مدنی، جزایی و تجاری</p>
   <div class="hero-actions">
-    <a href="#courses" class="btn-primary">مشاهده دوره‌ها</a>
-    <a href="#contact" class="btn-secondary">دریافت مشاوره</a>
+    <a href="#contact" class="btn-primary">مشاوره رایگان</a>
+    <a href="#courses" class="btn-secondary">مشاهده دوره‌ها</a>
   </div>
   <div class="hero-stats">
-    <div class="stat-item">
-      <span class="stat-num">+۵۰۰</span>
-      <div class="stat-label">موکل موفق</div>
-    </div>
     <div class="stat-item">
       <span class="stat-num">+۱۵</span>
       <div class="stat-label">سال تجربه</div>
     </div>
     <div class="stat-item">
-      <span class="stat-num">+۳۰</span>
-      <div class="stat-label">دوره آموزشی</div>
+      <span class="stat-num">+۵۰۰</span>
+      <div class="stat-label">پرونده موفق</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">+۲۰۰۰</span>
+      <div class="stat-label">دانشجوی فارغ‌التحصیل</div>
     </div>
   </div>
 </section>
@@ -525,38 +590,38 @@
 <!-- SERVICES -->
 <section id="services">
   <div class="section-eyebrow">خدمات ما</div>
-  <div class="section-title">چه کمکی می‌توانیم بکنیم؟</div>
-  <p class="section-sub">طیف کاملی از خدمات حقوقی، آموزشی و برنامه‌ریزی برای نیازهای شما</p>
+  <div class="section-title">چه کاری برای شما انجام می‌دهیم؟</div>
+  <p class="section-sub">از مشاوره اولیه تا دفاع در دادگاه، تمام مراحل را همراه شما هستیم</p>
   <div class="services-grid">
     <div class="service-card">
       <div class="service-icon">⚖️</div>
-      <h3>مشاوره حقوقی</h3>
-      <p>راهنمایی تخصصی در حوزه‌های مختلف حقوق مدنی، تجاری و خانواده</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">📋</div>
-      <h3>برنامه‌ریزی حقوقی</h3>
-      <p>تدوین استراتژی و برنامه‌ریزی برای پیشگیری از مشکلات حقوقی</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🎓</div>
-      <h3>آموزش تخصصی</h3>
-      <p>دوره‌های آموزشی کاربردی برای آشنایی با حقوق و قوانین جاری</p>
+      <h3>دعاوی حقوقی</h3>
+      <p>پیگیری و دفاع از حقوق موکلین در دادگاه‌های عمومی، تجدیدنظر و دیوان‌عالی</p>
     </div>
     <div class="service-card">
       <div class="service-icon">📄</div>
       <h3>تنظیم قراردادها</h3>
-      <p>تهیه و بررسی انواع قراردادهای تجاری، ملکی و استخدامی</p>
+      <p>تنظیم و بررسی انواع قراردادهای تجاری، ملکی، کاری و خانوادگی</p>
     </div>
     <div class="service-card">
       <div class="service-icon">🏛️</div>
-      <h3>حقوق تجاری</h3>
-      <p>مشاوره برای کسب‌وکارها در زمینه ثبت شرکت و امور حقوقی</p>
+      <h3>دعاوی کیفری</h3>
+      <p>دفاع از متهمین و پیگیری شکایات کیفری در تمام مراحل دادرسی</p>
     </div>
     <div class="service-card">
-      <div class="service-icon">🔍</div>
-      <h3>بررسی پرونده</h3>
-      <p>تحلیل و ارزیابی پرونده‌های حقوقی و ارائه راهکار</p>
+      <div class="service-icon">🏠</div>
+      <h3>حقوق ملکی</h3>
+      <p>رسیدگی به اختلافات ملکی، دعاوی تخلیه، خلع‌ید و تقسیم ارث</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👨‍👩‍👧</div>
+      <h3>حقوق خانواده</h3>
+      <p>طلاق، حضانت، مهریه، نفقه و تمام دعاوی مربوط به حقوق خانواده</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💼</div>
+      <h3>حقوق تجاری</h3>
+      <p>ثبت شرکت، اختلافات تجاری، ورشکستگی و قراردادهای بازرگانی</p>
     </div>
   </div>
 </section>
@@ -564,667 +629,167 @@
 <!-- COURSES -->
 <section id="courses">
   <div class="section-eyebrow">دوره‌های آموزشی</div>
-  <div class="section-title">بیاموزید، پیشرفت کنید</div>
-  <p class="section-sub">دوره‌های جامع و کاربردی برای آشنایی با قوانین و حقوق شهروندی</p>
+  <div class="section-title">یادگیری حرفه‌ای حقوق</div>
+  <p class="section-sub">دوره‌های جامع و کاربردی برای دانشجویان و متخصصان حقوق</p>
   <div class="courses-grid">
     <div class="course-card">
-      <span class="course-tag">پرطرفدار</span>
-      <h3>حقوق قراردادها</h3>
-      <p>اصول و قواعد تنظیم قرارداد، شرایط صحت و موارد بطلان در حقوق ایران</p>
+      <div class="course-tag">حقوق مدنی</div>
+      <h3>دوره جامع حقوق مدنی</h3>
+      <p>از قراردادها و تعهدات تا اموال و مالکیت، تمام مباحث اساسی حقوق مدنی</p>
       <div class="course-meta">
-        <span>📅 ۸ جلسه</span>
-        <span>🕐 آنلاین</span>
-        <span>⭐ مقدماتی</span>
+        <span>📚 ۴۰ ساعت آموزش</span>
+        <span>🎓 مدرک معتبر</span>
       </div>
     </div>
     <div class="course-card">
-      <span class="course-tag">جدید</span>
-      <h3>حقوق خانواده</h3>
-      <p>ازدواج، طلاق، نفقه، حضانت و ارث — همه آنچه باید بدانید</p>
+      <div class="course-tag">حقوق جزا</div>
+      <h3>دوره جامع حقوق جزا</h3>
+      <p>بررسی جرائم، مجازات‌ها، آیین دادرسی کیفری و دفاعیات موثر در پرونده‌های کیفری</p>
       <div class="course-meta">
-        <span>📅 ۶ جلسه</span>
-        <span>🕐 آنلاین</span>
-        <span>⭐ عمومی</span>
+        <span>📚 ۳۵ ساعت آموزش</span>
+        <span>🎓 مدرک معتبر</span>
       </div>
     </div>
     <div class="course-card">
-      <span class="course-tag">تخصصی</span>
-      <h3>حقوق کسب‌وکار</h3>
-      <p>قوانین تجاری، ثبت شرکت، مالیات و حمایت از مالکیت فکری</p>
+      <div class="course-tag">آزمون وکالت</div>
+      <h3>آمادگی آزمون وکالت</h3>
+      <p>دوره فشرده تست‌زنی، نکات طلایی و استراتژی‌های موفقیت در آزمون وکالت</p>
       <div class="course-meta">
-        <span>📅 ۱۰ جلسه</span>
-        <span>🕐 آنلاین</span>
-        <span>⭐ پیشرفته</span>
-      </div>
-    </div>
-    <div class="course-card">
-      <span class="course-tag">کاربردی</span>
-      <h3>حقوق ملکی</h3>
-      <p>خرید و فروش ملک، اجاره، دعاوی ملکی و نکات مهم معاملات</p>
-      <div class="course-meta">
-        <span>📅 ۵ جلسه</span>
-        <span>🕐 آنلاین</span>
-        <span>⭐ عمومی</span>
-      </div>
-    </div>
-    <div class="course-card">
-      <span class="course-tag">آموزشی</span>
-      <h3>برنامه‌ریزی مالی و حقوقی</h3>
-      <p>مدیریت دارایی، برنامه‌ریزی مالیاتی و حفاظت از حقوق مالی</p>
-      <div class="course-meta">
-        <span>📅 ۷ جلسه</span>
-        <span>🕐 آنلاین</span>
-        <span>⭐ متوسط</span>
-      </div>
-    </div>
-    <div class="course-card">
-      <span class="course-tag">ویژه</span>
-      <h3>حقوق کار و استخدام</h3>
-      <p>قانون کار، قراردادهای استخدامی، بیمه و حقوق کارگر و کارفرما</p>
-      <div class="course-meta">
-        <span>📅 ۶ جلسه</span>
-        <span>🕐 آنلاین</span>
-        <span>⭐ عمومی</span>
+        <span>📚 ۵۰ ساعت آموزش</span>
+        <span>🎓 مدرک معتبر</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ONLINE QUIZ -->
+<!-- QUIZ -->
 <section id="quiz">
-  <div class="section-eyebrow">تست‌زنی آنلاین</div>
-  <div class="section-title">خودتان را محک بزنید</div>
-  <p class="section-sub">برای هر درس ۱۱ تست از مباحث مهم پاسخ دهید و در پایان پاسخنامه و درصد خود را مشاهده کنید</p>
+  <div class="section-eyebrow">تست‌زنی</div>
+  <div class="section-title">مهارت‌های خود را بسنجید</div>
+  <p class="section-sub">سوالات چهارگزینه‌ای برای ارزیابی دانش حقوقی شما</p>
 
   <div class="quiz-subjects">
-    <button class="quiz-subject-btn active" data-subject="tejarat" onclick="switchQuizSubject('tejarat')">حقوق تجارت</button>
-    <button class="quiz-subject-btn" data-subject="madani" onclick="switchQuizSubject('madani')">حقوق مدنی</button>
-    <button class="quiz-subject-btn" data-subject="ada" onclick="switchQuizSubject('ada')">آیین دادرسی مدنی</button>
-    <button class="quiz-subject-btn" data-subject="keifari" onclick="switchQuizSubject('keifari')">حقوق کیفری</button>
-  </div>
-
-  <!-- تجارت -->
-  <div class="quiz-set active" id="quiz-tejarat">
-    <form class="quiz-form" id="form-tejarat">
-
-      <div class="quiz-question" data-correct="1">
-        <div class="quiz-q-num">سوال ۱</div>
-        <p class="quiz-q-text">طبق ماده ۱ قانون تجارت، «تاجر» به چه کسی گفته می‌شود؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="tejarat-q1"/><span>کسی که شغل معمولی خود را معاملات تجارتی قرار دهد</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="tejarat-q1"/><span>کسی که دارای کارت بازرگانی باشد</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="tejarat-q1"/><span>کسی که در اداره ثبت شرکت‌ها ثبت‌نام کرده باشد</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="tejarat-q1"/><span>کسی که سهام شرکت سهامی را خریداری کند</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="3">
-        <div class="quiz-q-num">سوال ۲</div>
-        <p class="quiz-q-text">طبق قانون تجارت ایران، شرکت‌های تجارتی چند نوع هستند؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="tejarat-q2"/><span>۵ نوع</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="tejarat-q2"/><span>۶ نوع</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="tejarat-q2"/><span>۷ نوع</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="tejarat-q2"/><span>۸ نوع</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="3">
-        <div class="quiz-q-num">سوال ۳</div>
-        <p class="quiz-q-text">حداقل تعداد سهامداران برای تأسیس شرکت سهامی خاص چند نفر است؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="tejarat-q3"/><span>۱ نفر</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="tejarat-q3"/><span>۲ نفر</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="tejarat-q3"/><span>۳ نفر</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="tejarat-q3"/><span>۵ نفر</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="3">
-        <div class="quiz-q-num">سوال ۴</div>
-        <p class="quiz-q-text">کدام سند تجاری معمولاً وسیله پرداخت فوری است و وعده‌دار شدن آن خلاف ماهیت اصلی آن است؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="tejarat-q4"/><span>برات</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="tejarat-q4"/><span>سفته</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="tejarat-q4"/><span>چک</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="tejarat-q4"/><span>اوراق قرضه</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="1">
-        <div class="quiz-q-num">سوال ۵</div>
-        <p class="quiz-q-text">«ورشکستگی» تاجر نتیجه چه وضعیتی است؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="tejarat-q5"/><span>توقف از تأدیه (پرداخت) دیون و وجوهی که بر عهده اوست</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="tejarat-q5"/><span>کاهش سرمایه ثبتی شرکت</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="tejarat-q5"/><span>تغییر نوع شرکت تجاری</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="tejarat-q5"/><span>انحلال ارادی شرکت توسط شرکا</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="2">
-        <div class="quiz-q-num">سوال ۶</div>
-        <p class="quiz-q-text">حداقل سرمایه برای تأسیس شرکت سهامی عام چقدر است؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="tejarat-q6"/><span>۱,۰۰۰,۰۰۰ ریال</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="tejarat-q6"/><span>۵,۰۰۰,۰۰۰ ریال</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="tejarat-q6"/><span>۱۰۰,۰۰۰ ریال</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="tejarat-q6"/><span>بدون حداقل سرمایه قانونی</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="2">
-        <div class="quiz-q-num">سوال ۷</div>
-        <p class="quiz-q-text">مدیران شرکت سهامی در قبال تخلف از قوانین چه نوع مسئولیتی دارند؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="tejarat-q7"/><span>مسئولیت محدود به میزان سهام خود</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="tejarat-q7"/><span>مسئولیت تضامنی در قبال خساراتی که بر اثر تخلف از قوانین وارد شده</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="tejarat-q7"/><span>هیچ مسئولیتی ندارند</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="tejarat-q7"/><span>مسئولیت فقط در برابر هیئت‌مدیره</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="3">
-        <div class="quiz-q-num">سوال ۸</div>
-        <p class="quiz-q-text">«برات» در حقوق تجارت چه سندی است؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="tejarat-q8"/><span>سندی که بانک صادر می‌کند</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="tejarat-q8"/><span>نوعی قرارداد بیمه تجاری</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="tejarat-q8"/><span>سندی که توسط برات‌کش صادر و به برات‌گیر دستور پرداخت مبلغی به دارنده داده می‌شود</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="tejarat-q8"/><span>نوعی سهام شرکت</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="1">
-        <div class="quiz-q-num">سوال ۹</div>
-        <p class="quiz-q-text">در شرکت با مسئولیت محدود، مسئولیت هر شریک تا چه میزانی است؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="tejarat-q9"/><span>محدود به آورده (سهم‌الشرکه) خود در شرکت</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="tejarat-q9"/><span>نامحدود و از محل دارایی شخصی</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="tejarat-q9"/><span>تضامنی با سایر شرکا</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="tejarat-q9"/><span>فقط تا سقف ۵۰٪ دیون شرکت</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="4">
-        <div class="quiz-q-num">سوال ۱۰</div>
-        <p class="quiz-q-text">مرور زمان دعاوی برات، سفته و چک از تاریخ سررسید چند سال است؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="tejarat-q10"/><span>۱ سال</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="tejarat-q10"/><span>۲ سال</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="tejarat-q10"/><span>۳ سال</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="tejarat-q10"/><span>۵ سال</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="2">
-        <div class="quiz-q-num">سوال ۱۱</div>
-        <p class="quiz-q-text">«دلال» در قانون تجارت کیست؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="tejarat-q11"/><span>کسی که به نام خود و برای دیگری معامله می‌کند</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="tejarat-q11"/><span>کسی که در مقابل اجرت، واسطه انجام معاملاتی شده یا برای کسی که می‌خواهد معاملاتی انجام دهد طرف معامله پیدا می‌کند</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="tejarat-q11"/><span>نماینده قانونی شرکت</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="tejarat-q11"/><span>مدیر تصفیه شرکت ورشکسته</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-actions">
-        <button type="button" class="quiz-submit-btn" onclick="gradeQuiz('tejarat')">مشاهده نتیجه و پاسخنامه</button>
-        <button type="button" class="quiz-retry-btn" onclick="resetQuiz('tejarat')">تلاش دوباره</button>
-      </div>
-    </form>
-    <div class="quiz-result" id="result-tejarat">
-      <div class="quiz-score-num"><span id="score-tejarat">۰٪</span></div>
-      <div class="quiz-score-text" id="scoretext-tejarat"></div>
-    </div>
+    <button class="quiz-subject-btn active" data-subject="madani" onclick="switchQuizSubject('madani')">حقوق مدنی</button>
+    <button class="quiz-subject-btn" data-subject="jaza" onclick="switchQuizSubject('jaza')">حقوق جزا</button>
   </div>
 
   <!-- مدنی -->
-  <div class="quiz-set" id="quiz-madani">
-    <form class="quiz-form" id="form-madani">
-
-      <div class="quiz-question" data-correct="1">
+  <div class="quiz-set active" id="quiz-madani">
+    <div id="form-madani">
+      <div class="quiz-question" data-correct="b">
         <div class="quiz-q-num">سوال ۱</div>
-        <p class="quiz-q-text">طبق قانون مدنی، سن بلوغ دختران چند سال تمام قمری است؟</p>
+        <div class="quiz-q-text">حداقل سن ازدواج برای دختران در قانون مدنی ایران چقدر است؟</div>
         <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="madani-q1"/><span>۹ سال تمام قمری</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="madani-q1"/><span>۱۲ سال تمام قمری</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="madani-q1"/><span>۱۵ سال تمام قمری</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="madani-q1"/><span>۱۸ سال تمام قمری</span></label>
+          <label class="quiz-option" data-val="a"><input type="radio" name="madani-q1" value="a"/> ۱۲ سال</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="madani-q1" value="b"/> ۱۳ سال</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="madani-q1" value="c"/> ۱۵ سال</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="madani-q1" value="d"/> ۱۸ سال</label>
         </div>
       </div>
-
-      <div class="quiz-question" data-correct="4">
+      <div class="quiz-question" data-correct="c">
         <div class="quiz-q-num">سوال ۲</div>
-        <p class="quiz-q-text">طبق ماده ۱۹۰ قانون مدنی، کدام مورد جزو شرایط اساسی صحت معامله نیست؟</p>
+        <div class="quiz-q-text">مدت مرور زمان دعاوی بازرگانی در قانون مدنی ایران چند سال است؟</div>
         <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="madani-q2"/><span>قصد طرفین و رضای آنها</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="madani-q2"/><span>اهلیت طرفین معامله</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="madani-q2"/><span>موضوع معین که مورد معامله باشد</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="madani-q2"/><span>ثبت رسمی معامله نزد دفترخانه</span></label>
+          <label class="quiz-option" data-val="a"><input type="radio" name="madani-q2" value="a"/> ۳ سال</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="madani-q2" value="b"/> ۵ سال</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="madani-q2" value="c"/> ۱۰ سال</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="madani-q2" value="d"/> ۲۰ سال</label>
         </div>
       </div>
-
-      <div class="quiz-question" data-correct="2">
+      <div class="quiz-question" data-correct="a">
         <div class="quiz-q-num">سوال ۳</div>
-        <p class="quiz-q-text">«مالکیت» در حقوق مدنی ایران به چه معناست؟</p>
+        <div class="quiz-q-text">کدام‌یک از موارد زیر از ارکان اصلی عقد بیع نیست؟</div>
         <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="madani-q3"/><span>حق استفاده موقت از مال دیگری</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="madani-q3"/><span>حقی که به موجب آن شخص می‌تواند در حدود قانون، هر نوع تصرف و انتفاعی از مال خود ببرد</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="madani-q3"/><span>حق اجاره دادن مال به دیگری</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="madani-q3"/><span>حق وثیقه گذاشتن مال نزد بانک</span></label>
+          <label class="quiz-option" data-val="a"><input type="radio" name="madani-q3" value="a"/> شهادت شهود</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="madani-q3" value="b"/> ایجاب و قبول</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="madani-q3" value="c"/> مبیع</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="madani-q3" value="d"/> ثمن</label>
         </div>
       </div>
-
-      <div class="quiz-question" data-correct="1">
-        <div class="quiz-q-num">سوال ۴</div>
-        <p class="quiz-q-text">کدام گروه، وراث طبقه اول ارث محسوب می‌شوند؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="madani-q4"/><span>پدر، مادر، اولاد و اولادِ اولاد</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="madani-q4"/><span>برادر و خواهر</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="madani-q4"/><span>اجداد</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="madani-q4"/><span>عمو و عمه</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="3">
-        <div class="quiz-q-num">سوال ۵</div>
-        <p class="quiz-q-text">عقد نکاح (ازدواج) در حقوق مدنی ایران چه نوع عقدی است؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="madani-q5"/><span>عقدی که نیاز به شاهد ندارد</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="madani-q5"/><span>عقدی جایز و قابل فسخ یک‌طرفه و بدون شرط</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="madani-q5"/><span>عقدی لازم که جز در موارد خاص قانونی قابل فسخ نیست</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="madani-q5"/><span>عقدی که فقط با سند رسمی منعقد می‌شود</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="1">
-        <div class="quiz-q-num">سوال ۶</div>
-        <p class="quiz-q-text">«اتلاف» در حقوق مدنی به چه معناست؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="madani-q6"/><span>از بین بردن مستقیم مال یا منفعت دیگری</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="madani-q6"/><span>ایجاد غیرمستقیم زمینه ورود ضرر (تسبیب)</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="madani-q6"/><span>تقصیر در انجام تعهد قراردادی</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="madani-q6"/><span>فسخ یک‌طرفه قرارداد</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="3">
-        <div class="quiz-q-num">سوال ۷</div>
-        <p class="quiz-q-text">«عقد جایز» در برابر «عقد لازم» به چه معناست؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="madani-q7"/><span>عقدی که هیچ‌گاه فسخ نمی‌شود</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="madani-q7"/><span>عقدی که فقط با توافق دو طرف منحل می‌شود</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="madani-q7"/><span>عقدی که هر یک از طرفین می‌تواند هر وقت بخواهد آن را فسخ کند</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="madani-q7"/><span>عقدی که نیاز به ثبت رسمی دارد</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="2">
-        <div class="quiz-q-num">سوال ۸</div>
-        <p class="quiz-q-text">«ضمان درک» در حقوق مدنی به چه معناست؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="madani-q8"/><span>تضمین کیفیت کالای فروخته‌شده</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="madani-q8"/><span>مسئولیت فروشنده در صورتی که مبیع متعلق به دیگری بوده و خریدار ثمن را پس بگیرد</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="madani-q8"/><span>تضمین اجرای قرارداد اجاره</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="madani-q8"/><span>مسئولیت ضامن در قبال طلبکار</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="1">
-        <div class="quiz-q-num">سوال ۹</div>
-        <p class="quiz-q-text">«خیار عیب» به خریدار اجازه می‌دهد چه کاری انجام دهد؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="madani-q9"/><span>در صورت وجود عیب در مبیع، معامله را فسخ یا ارش دریافت کند</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="madani-q9"/><span>قیمت را کاهش دهد بدون فسخ معامله</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="madani-q9"/><span>خسارت تأخیر در تحویل را مطالبه کند</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="madani-q9"/><span>قرارداد را به شخص ثالث انتقال دهد</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="4">
-        <div class="quiz-q-num">سوال ۱۰</div>
-        <p class="quiz-q-text">«حق انتفاع» با «حق مالکیت» چه تفاوتی دارد؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="madani-q10"/><span>حق انتفاع فقط برای اموال غیرمنقول است</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="madani-q10"/><span>در حق انتفاع، شخص مالک عین مال هم می‌شود</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="madani-q10"/><span>حق انتفاع قابل توارث است اما مالکیت نه</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="madani-q10"/><span>در حق انتفاع، شخص می‌تواند از مال استفاده کند اما مالک عین آن نیست</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="3">
-        <div class="quiz-q-num">سوال ۱۱</div>
-        <p class="quiz-q-text">مطابق قانون مدنی، عقد هبه (بخشش) چه زمانی واقع می‌شود؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="madani-q11"/><span>با ثبت در دفترخانه</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="madani-q11"/><span>با اعلام شفاهی واهب</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="madani-q11"/><span>با قبول موهوب‌له و قبض (تحویل) مال موهوب</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="madani-q11"/><span>با امضای سند عادی</span></label>
-        </div>
-      </div>
-
       <div class="quiz-actions">
-        <button type="button" class="quiz-submit-btn" onclick="gradeQuiz('madani')">مشاهده نتیجه و پاسخنامه</button>
-        <button type="button" class="quiz-retry-btn" onclick="resetQuiz('madani')">تلاش دوباره</button>
+        <button class="quiz-submit-btn" onclick="gradeQuiz('madani')">ثبت پاسخ‌ها</button>
+        <button class="quiz-retry-btn" onclick="resetQuiz('madani')">دوباره امتحان کن</button>
       </div>
-    </form>
-    <div class="quiz-result" id="result-madani">
-      <div class="quiz-score-num"><span id="score-madani">۰٪</span></div>
-      <div class="quiz-score-text" id="scoretext-madani"></div>
+      <div class="quiz-result" id="result-madani">
+        <div class="quiz-score-num" id="score-madani"></div>
+        <div class="quiz-score-text" id="scoretext-madani"></div>
+      </div>
     </div>
   </div>
 
-  <!-- آیین دادرسی مدنی -->
-  <div class="quiz-set" id="quiz-ada">
-    <form class="quiz-form" id="form-ada">
-
-      <div class="quiz-question" data-correct="2">
+  <!-- جزا -->
+  <div class="quiz-set" id="quiz-jaza">
+    <div id="form-jaza">
+      <div class="quiz-question" data-correct="b">
         <div class="quiz-q-num">سوال ۱</div>
-        <p class="quiz-q-text">به‌طور کلی، دادگاه صالح برای رسیدگی به دعاوی مدنی کدام دادگاه است؟</p>
+        <div class="quiz-q-text">در قانون مجازات اسلامی، کدام دسته از جرائم قابل گذشت هستند؟</div>
         <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="ada-q1"/><span>دادگاه محل وقوع جرم</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="ada-q1"/><span>دادگاه محل اقامت خوانده</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="ada-q1"/><span>دادگاه محل اقامت خواهان</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="ada-q1"/><span>دادگاه محل تنظیم قرارداد</span></label>
+          <label class="quiz-option" data-val="a"><input type="radio" name="jaza-q1" value="a"/> جرائم حدی</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="jaza-q1" value="b"/> جرائم قصاص و دیات</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="jaza-q1" value="c"/> جرائم علیه امنیت ملی</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="jaza-q1" value="d"/> جرائم اقتصادی</label>
         </div>
       </div>
-
-      <div class="quiz-question" data-correct="2">
+      <div class="quiz-question" data-correct="d">
         <div class="quiz-q-num">سوال ۲</div>
-        <p class="quiz-q-text">مهلت تجدیدنظرخواهی از احکام دادگاه‌های بدوی برای اشخاص مقیم ایران چند روز از تاریخ ابلاغ است؟</p>
+        <div class="quiz-q-text">در کدام صورت شروع به جرم قابل مجازات نیست؟</div>
         <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="ada-q2"/><span>۱۰ روز</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="ada-q2"/><span>۲۰ روز</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="ada-q2"/><span>۳۰ روز</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="ada-q2"/><span>۲ ماه</span></label>
+          <label class="quiz-option" data-val="a"><input type="radio" name="jaza-q2" value="a"/> وقتی عملیات اجرایی آغاز شده باشد</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="jaza-q2" value="b"/> وقتی قصد مجرمانه وجود داشته باشد</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="jaza-q2" value="c"/> وقتی جرم به مرحله نتیجه رسیده باشد</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="jaza-q2" value="d"/> وقتی قانون شروع به آن جرم را جرم‌انگاری نکرده باشد</label>
         </div>
       </div>
-
-      <div class="quiz-question" data-correct="3">
+      <div class="quiz-question" data-correct="c">
         <div class="quiz-q-num">سوال ۳</div>
-        <p class="quiz-q-text">مهلت تجدیدنظرخواهی برای اشخاص مقیم خارج از کشور چقدر است؟</p>
+        <div class="quiz-q-text">مجازات تعزیری درجه ۵ شامل کدام‌یک از موارد زیر است؟</div>
         <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="ada-q3"/><span>۲۰ روز</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="ada-q3"/><span>۱ ماه</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="ada-q3"/><span>۲ ماه</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="ada-q3"/><span>۳ ماه</span></label>
+          <label class="quiz-option" data-val="a"><input type="radio" name="jaza-q3" value="a"/> حبس بیش از ۲۵ سال</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="jaza-q3" value="b"/> حبس بیش از ۱۵ تا ۲۵ سال</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="jaza-q3" value="c"/> حبس بیش از ۵ تا ۱۰ سال</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="jaza-q3" value="d"/> حبس بیش از ۲ تا ۵ سال</label>
         </div>
       </div>
-
-      <div class="quiz-question" data-correct="2">
-        <div class="quiz-q-num">سوال ۴</div>
-        <p class="quiz-q-text">دادخواست برای آنکه قابل ثبت و رسیدگی باشد، حداقل باید دارای چه عناصری باشد؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="ada-q4"/><span>فقط امضای خواهان</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="ada-q4"/><span>مشخصات طرفین، تعیین خواسته و دلایل و منضمات دادخواست</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="ada-q4"/><span>فقط مهر وکیل دادگستری</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="ada-q4"/><span>تأیید قبلی شورای حل اختلاف</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="1">
-        <div class="quiz-q-num">سوال ۵</div>
-        <p class="quiz-q-text">«اعتراض ثالث» در آیین دادرسی مدنی در چه زمانی مطرح می‌شود؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="ada-q5"/><span>زمانی که شخصی خارج از دعوا، رأی صادره را مخل حقوق خود بداند</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="ada-q5"/><span>زمانی که خوانده به اصل حکم اعتراض دارد</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="ada-q5"/><span>زمانی که خواهان دادخواست خود را مسترد می‌کند</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="ada-q5"/><span>زمانی که دادگاه صادرکننده رأی صالح نبوده است</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="2">
-        <div class="quiz-q-num">سوال ۶</div>
-        <p class="quiz-q-text">اجرای حکم دادگاه پس از قطعیت آن بر عهده کدام مرجع است؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="ada-q6"/><span>اداره ثبت اسناد و املاک</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="ada-q6"/><span>واحد اجرای احکام مدنی دادگاه</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="ada-q6"/><span>نیروی انتظامی</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="ada-q6"/><span>شورای حل اختلاف</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="3">
-        <div class="quiz-q-num">سوال ۷</div>
-        <p class="quiz-q-text">«دعوای متقابل» در آیین دادرسی مدنی چیست؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="ada-q7"/><span>دعوایی که خواهان علیه شخص ثالث طرح می‌کند</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="ada-q7"/><span>درخواست مجدد خواهان پس از صدور حکم</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="ada-q7"/><span>دعوایی که خوانده در مقابل خواهان در همان پرونده اقامه می‌کند</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="ada-q7"/><span>درخواست تجدیدنظر از سوی دادگاه</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="1">
-        <div class="quiz-q-num">سوال ۸</div>
-        <p class="quiz-q-text">«دستور موقت» در آیین دادرسی مدنی با چه هدفی صادر می‌شود؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="ada-q8"/><span>جلوگیری از تضییع حق خواهان تا صدور حکم قطعی</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="ada-q8"/><span>صدور حکم نهایی به نفع خواهان</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="ada-q8"/><span>توقف پرونده تا حضور خوانده</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="ada-q8"/><span>ابلاغ حکم به طرفین</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="4">
-        <div class="quiz-q-num">سوال ۹</div>
-        <p class="quiz-q-text">«فرجام‌خواهی» در آیین دادرسی مدنی به چه معناست؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="ada-q9"/><span>اعتراض به قرارهای اجرایی</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="ada-q9"/><span>درخواست تجدیدنظر در دادگاه تجدیدنظر استان</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="ada-q9"/><span>اعتراض شخص ثالث به حکم</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="ada-q9"/><span>درخواست نقض یا ابرام حکم در دیوان عالی کشور</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="2">
-        <div class="quiz-q-num">سوال ۱۰</div>
-        <p class="quiz-q-text">«تأمین خواسته» در چه شرایطی صادر می‌شود؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="ada-q10"/><span>فقط پس از صدور حکم قطعی</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="ada-q10"/><span>برای توقیف اموال خوانده به منظور تضمین اجرای حکم احتمالی</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="ada-q10"/><span>فقط در دعاوی کیفری</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="ada-q10"/><span>برای جلب خوانده به دادگاه</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="3">
-        <div class="quiz-q-num">سوال ۱۱</div>
-        <p class="quiz-q-text">«وکالت دادگستری» برای حضور در دادگاه چه شرطی دارد؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="ada-q11"/><span>داشتن مدرک حقوقی کافی است</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="ada-q11"/><span>فقط تأیید موکل لازم است</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="ada-q11"/><span>داشتن پروانه وکالت معتبر از کانون وکلای دادگستری</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="ada-q11"/><span>تأیید قوه قضائیه برای هر پرونده</span></label>
-        </div>
-      </div>
-
       <div class="quiz-actions">
-        <button type="button" class="quiz-submit-btn" onclick="gradeQuiz('ada')">مشاهده نتیجه و پاسخنامه</button>
-        <button type="button" class="quiz-retry-btn" onclick="resetQuiz('ada')">تلاش دوباره</button>
+        <button class="quiz-submit-btn" onclick="gradeQuiz('jaza')">ثبت پاسخ‌ها</button>
+        <button class="quiz-retry-btn" onclick="resetQuiz('jaza')">دوباره امتحان کن</button>
       </div>
-    </form>
-    <div class="quiz-result" id="result-ada">
-      <div class="quiz-score-num"><span id="score-ada">۰٪</span></div>
-      <div class="quiz-score-text" id="scoretext-ada"></div>
+      <div class="quiz-result" id="result-jaza">
+        <div class="quiz-score-num" id="score-jaza"></div>
+        <div class="quiz-score-text" id="scoretext-jaza"></div>
+      </div>
     </div>
   </div>
-
-  <!-- کیفری -->
-  <div class="quiz-set" id="quiz-keifari">
-    <form class="quiz-form" id="form-keifari">
-
-      <div class="quiz-question" data-correct="3">
-        <div class="quiz-q-num">سوال ۱</div>
-        <p class="quiz-q-text">مجازات‌ها در قانون مجازات اسلامی به چند دسته اصلی تقسیم می‌شوند؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="keifari-q1"/><span>۲ دسته</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="keifari-q1"/><span>۳ دسته</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="keifari-q1"/><span>۴ دسته: حدود، قصاص، دیات و تعزیرات</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="keifari-q1"/><span>۵ دسته</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="1">
-        <div class="quiz-q-num">سوال ۲</div>
-        <p class="quiz-q-text">«رکن قانونی جرم» به چه معناست؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="keifari-q2"/><span>وجود قانونی که عمل را جرم‌انگاری کرده و برای آن مجازات تعیین کرده باشد</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="keifari-q2"/><span>قصد و اراده مرتکب در ارتکاب جرم</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="keifari-q2"/><span>انجام فیزیکی رفتار مجرمانه</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="keifari-q2"/><span>وجود شاکی خصوصی</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="2">
-        <div class="quiz-q-num">سوال ۳</div>
-        <p class="quiz-q-text">سن مسئولیت کیفری برای پسران، معادل سن بلوغ شرعی، چند سال تمام قمری است؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="keifari-q3"/><span>۹ سال تمام قمری</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="keifari-q3"/><span>۱۵ سال تمام قمری</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="keifari-q3"/><span>۱۸ سال تمام قمری</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="keifari-q3"/><span>۲۱ سال تمام قمری</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="2">
-        <div class="quiz-q-num">سوال ۴</div>
-        <p class="quiz-q-text">دفاع مشروع زمانی پذیرفته می‌شود که دفاع متناسب با چه چیزی باشد؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="keifari-q4"/><span>خواسته شخص مدافع</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="keifari-q4"/><span>حمله و خطر موجود</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="keifari-q4"/><span>مجازات قانونی همان جرم</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="keifari-q4"/><span>نظر شخصی قاضی</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="2">
-        <div class="quiz-q-num">سوال ۵</div>
-        <p class="quiz-q-text">«تکرار جرم» به چه وضعیتی گفته می‌شود؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="keifari-q5"/><span>ارتکاب چند جرم به‌طور هم‌زمان</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="keifari-q5"/><span>ارتکاب جرم جدید پس از محکومیت قطعی و اجرای مجازات جرم قبلی</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="keifari-q5"/><span>شرکت چند نفر در ارتکاب یک جرم</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="keifari-q5"/><span>تخفیف مجازات به دلیل وضعیت خاص متهم</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="2">
-        <div class="quiz-q-num">سوال ۶</div>
-        <p class="quiz-q-text">«مرور زمان» در جرایم تعزیری به چه معناست؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="keifari-q6"/><span>کاهش مجازات به دلیل کهولت سن متهم</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="keifari-q6"/><span>سپری شدن مدت زمان قانونی که موجب موقوف ماندن تعقیب، اجرا یا مجازات می‌شود</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="keifari-q6"/><span>تبدیل مجازات حبس به جزای نقدی</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="keifari-q6"/><span>تعلیق اجرای حکم به درخواست محکوم</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="1">
-        <div class="quiz-q-num">سوال ۷</div>
-        <p class="quiz-q-text">«شروع به جرم» در حقوق کیفری ایران چه زمانی قابل مجازات است؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="keifari-q7"/><span>زمانی که قانون برای آن مجازات تعیین کرده باشد</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="keifari-q7"/><span>در تمام جرایم بدون استثنا</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="keifari-q7"/><span>فقط در جرایم علیه اموال</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="keifari-q7"/><span>هرگز قابل مجازات نیست</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="3">
-        <div class="quiz-q-num">سوال ۸</div>
-        <p class="quiz-q-text">«تعلیق اجرای مجازات» یعنی چه؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="keifari-q8"/><span>لغو کامل مجازات</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="keifari-q8"/><span>تبدیل حبس به جریمه نقدی</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="keifari-q8"/><span>به تأخیر انداختن اجرای مجازات برای مدتی با شرایط خاص</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="keifari-q8"/><span>تقلیل مجازات به نصف</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="4">
-        <div class="quiz-q-num">سوال ۹</div>
-        <p class="quiz-q-text">«معاونت در جرم» چه زمانی محقق می‌شود؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="keifari-q9"/><span>وقتی شخص خودش مرتکب جرم می‌شود</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="keifari-q9"/><span>وقتی شخص از وقوع جرم مطلع است اما گزارش نمی‌دهد</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="keifari-q9"/><span>وقتی شخص پس از وقوع جرم اموال مجرم را پنهان می‌کند</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="keifari-q9"/><span>وقتی شخص با علم و عمد دیگری را در ارتکاب جرم یاری می‌دهد</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="2">
-        <div class="quiz-q-num">سوال ۱۰</div>
-        <p class="quiz-q-text">«دیه» در قانون مجازات اسلامی چیست؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="keifari-q10"/><span>نوعی مجازات تعزیری</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="keifari-q10"/><span>مالی که به سبب جنایت بر نفس یا مادون نفس قانوناً تعیین شده</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="keifari-q10"/><span>خسارت مدنی قراردادی</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="keifari-q10"/><span>جریمه‌ای که دادگاه به اختیار تعیین می‌کند</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-question" data-correct="3">
-        <div class="quiz-q-num">سوال ۱۱</div>
-        <p class="quiz-q-text">«اصل برائت» در حقوق کیفری به چه معناست؟</p>
-        <div class="quiz-options">
-          <label class="quiz-option" data-val="1"><input type="radio" name="keifari-q11"/><span>متهم باید بی‌گناهی خود را ثابت کند</span></label>
-          <label class="quiz-option" data-val="2"><input type="radio" name="keifari-q11"/><span>دادگاه می‌تواند بدون دلیل حکم صادر کند</span></label>
-          <label class="quiz-option" data-val="3"><input type="radio" name="keifari-q11"/><span>هر شخص تا زمانی که مجرمیتش اثبات نشده، بی‌گناه فرض می‌شود</span></label>
-          <label class="quiz-option" data-val="4"><input type="radio" name="keifari-q11"/><span>دادستان باید از متهم دفاع کند</span></label>
-        </div>
-      </div>
-
-      <div class="quiz-actions">
-        <button type="button" class="quiz-submit-btn" onclick="gradeQuiz('keifari')">مشاهده نتیجه و پاسخنامه</button>
-        <button type="button" class="quiz-retry-btn" onclick="resetQuiz('keifari')">تلاش دوباره</button>
-      </div>
-    </form>
-    <div class="quiz-result" id="result-keifari">
-      <div class="quiz-score-num"><span id="score-keifari">۰٪</span></div>
-      <div class="quiz-score-text" id="scoretext-keifari"></div>
-    </div>
-  </div>
-
 </section>
 
 <!-- LEGAL MOVIES -->
 <section id="movies">
-  <div class="section-eyebrow">سینما و حقوق</div>
-  <div class="section-title">فیلم‌های حقوقی پیشنهادی</div>
-  <p class="section-sub">این فیلم‌ها نه‌تنها سرگرم‌کننده‌اند، بلکه دریچه‌ای عملی به دنیای حقوق، دادگاه و اخلاق حقوقی هستند</p>
+  <div class="section-eyebrow">فیلم‌های حقوقی</div>
+  <div class="section-title">سینما و حقوق</div>
+  <p class="section-sub">فیلم‌هایی که هر حقوقدانی باید ببیند</p>
   <div class="movies-grid">
 
     <div class="movie-card">
       <span class="movie-clapper">🎬</span>
-      <div class="movie-badge">دفاع کیفری</div>
-      <h3>The Lincoln Lawyer</h3>
-      <p>وکیل پرونده‌های جنایی که متوجه می‌شود موکلش آن‌قدرها هم بی‌گناه نیست.</p>
-      <p>پر از چالش‌های اخلاقی و حقوقی. مناسب برای آشنایی با دفاع کیفری.</p>
-    </div>
-
-    <div class="movie-card">
-      <span class="movie-clapper">🎬</span>
-      <div class="movie-badge">محاکمه نظامی</div>
-      <h3>A Few Good Men</h3>
-      <p>درباره محاکمه چند نظامی آمریکایی. یکی از معروف‌ترین صحنه‌های دادگاه تاریخ سینما را دارد.</p>
-      <p>دیالوگ‌های حقوقی فوق‌العاده.</p>
-    </div>
-
-    <div class="movie-card">
-      <span class="movie-clapper">🎬</span>
       <div class="movie-badge">درام حقوقی</div>
-      <h3>The Judge</h3>
-      <p>وکیلی موفق به زادگاهش برمی‌گردد و باید از پدرش که قاضی است دفاع کند.</p>
-      <p>ترکیبی از پرونده حقوقی و درام خانوادگی.</p>
+      <h3>A Few Good Men (1992)</h3>
+      <p>داستان یک وکیل نظامی جوان که باید دو سرباز را در برابر اتهام قتل دفاع کند.</p>
+      <p>نمونه‌ای عالی از استراتژی دفاع و تأثیر اخلاق در دادرسی.</p>
     </div>
 
     <div class="movie-card">
       <span class="movie-clapper">🎬</span>
-      <div class="movie-badge">هیجان‌انگیز حقوقی</div>
-      <h3>Primal Fear</h3>
-      <p>وکیلی مشهور دفاع از جوانی متهم به قتل یک اسقف را می‌پذیرد.</p>
+      <div class="movie-badge">کلاسیک — واجب‌الدید</div>
+      <h3>To Kill a Mockingbird (1962)</h3>
+      <p>وکیلی که از یک مرد سیاه‌پوست در جنوب آمریکا دفاع می‌کند.</p>
+      <p>درسی بزرگ درباره عدالت، اخلاق حرفه‌ای و شجاعت وکیل.</p>
+    </div>
+
+    <div class="movie-card">
+      <span class="movie-clapper">🎬</span>
+      <div class="movie-badge">تریلر حقوقی</div>
+      <h3>The Verdict (1982)</h3>
+      <p>وکیل شکست‌خورده‌ای که در یک پرونده پزشکی پیچیده فرصتی برای بازگشت پیدا می‌کند.</p>
       <p>یکی از بهترین پایان‌بندی‌های غافلگیرکننده سینمای حقوقی.</p>
     </div>
 
@@ -1278,6 +843,134 @@
       <div>
         <h4>در قراردادهای اجاره شرایط فسخ را بنویسید</h4>
         <p>نبود شرط فسخ در قرارداد اجاره می‌تواند تخلیه ملک را سال‌ها به تأخیر بیندازد؛ این بند را حتماً درج کنید.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     ADVISORY TIPS — NEW SECTION
+     ══════════════════════════════════════════════════════════ -->
+<section id="advisory">
+  <div class="section-eyebrow">نکات مشاوره‌ای</div>
+  <div class="section-title">راهنمای یادگیری حقوق</div>
+  <p class="section-sub">چگونه حقوق مدنی و جزا را درست بخوانیم و یاد بگیریم؟</p>
+
+  <div class="advisory-tabs">
+    <button class="advisory-tab-btn active" data-tab="madani-adv" onclick="switchAdvisory('madani-adv')">📘 حقوق مدنی</button>
+    <button class="advisory-tab-btn" data-tab="jaza-adv" onclick="switchAdvisory('jaza-adv')">⚖️ حقوق جزا</button>
+  </div>
+
+  <!-- حقوق مدنی -->
+  <div class="advisory-panel active" id="madani-adv">
+    <div class="advisory-intro">
+      حقوق مدنی ستون فقرات علم حقوق است. یادگیری درست آن نیازمند درک مفاهیم پایه، تسلط بر قانون مدنی و تمرین مستمر با مسائل عملی است. مسیر زیر نتیجه سال‌ها تجربه آموزشی موسسه آتیه‌سازان است.
+    </div>
+    <div class="advisory-list">
+      <div class="advisory-item">
+        <div class="advisory-icon">🔑</div>
+        <div class="advisory-body">
+          <div class="advisory-tag">گام اول</div>
+          <h4>با قانون مدنی شروع کنید، نه با شرح‌ها</h4>
+          <p>اولین قدم خواندن متن کامل قانون مدنی است؛ نه تفسیر و نه شرح. متن قانون را بخوانید تا ساختار کلی در ذهنتان شکل بگیرد. در خواندن اول نگران درک کامل نباشید.</p>
+        </div>
+      </div>
+      <div class="advisory-item">
+        <div class="advisory-icon">🗺️</div>
+        <div class="advisory-body">
+          <div class="advisory-tag">گام دوم</div>
+          <h4>نقشه ذهنی بسازید</h4>
+          <p>حقوق مدنی دارای بخش‌های مجزا است: اشخاص، اموال، قراردادها، ضمان قهری، خانواده و ارث. برای هر بخش یک نقشه ذهنی (mind map) بسازید تا ارتباط مواد با هم روشن شود.</p>
+        </div>
+      </div>
+      <div class="advisory-item">
+        <div class="advisory-icon">📖</div>
+        <div class="advisory-body">
+          <div class="advisory-tag">گام سوم</div>
+          <h4>منابع استاندارد را دنبال کنید</h4>
+          <p>برای مدنی کتاب‌های دکتر کاتوزیان اعتبار بسیار بالایی دارند. کتاب «قانون مدنی در نظم حقوق کنونی» دکتر ناصر کاتوزیان را به عنوان مرجع اصلی همیشه در دسترس داشته باشید.</p>
+        </div>
+      </div>
+      <div class="advisory-item">
+        <div class="advisory-icon">✍️</div>
+        <div class="advisory-body">
+          <div class="advisory-tag">گام چهارم</div>
+          <h4>نکات را با مثال یاد بگیرید</h4>
+          <p>هر ماده قانونی را با یک مثال واقعی ذهنی‌سازی کنید. مثلاً برای ماده ۱۹۰ قانون مدنی (شرایط صحت معامله) یک قرارداد فرضی بنویسید و شرایط را بر آن تطبیق دهید.</p>
+        </div>
+      </div>
+      <div class="advisory-item">
+        <div class="advisory-icon">🎯</div>
+        <div class="advisory-body">
+          <div class="advisory-tag">گام پنجم</div>
+          <h4>با تست تکرار کنید</h4>
+          <p>پس از هر فصل حتماً تست‌های مرتبط حل کنید. تست‌زنی دو کارکرد دارد: اول سنجش میزان یادگیری، دوم تثبیت مطالب در حافظه بلند‌مدت. از تست‌های سال‌های گذشته کنکور وکالت استفاده کنید.</p>
+        </div>
+      </div>
+      <div class="advisory-item">
+        <div class="advisory-icon">🔄</div>
+        <div class="advisory-body">
+          <div class="advisory-tag">نکته طلایی</div>
+          <h4>مرور دوره‌ای را فراموش نکنید</h4>
+          <p>حقوق مدنی پهنای زیادی دارد و فراموشی طبیعی است. بر اساس منحنی فراموشی ابینگهاوس، مطالب را در روز ۱، ۳، ۷، ۱۴ و ۳۰ پس از یادگیری مرور کنید تا ماندگاری آن‌ها به حداکثر برسد.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- حقوق جزا -->
+  <div class="advisory-panel" id="jaza-adv">
+    <div class="advisory-intro">
+      حقوق جزا شامل دو بخش اصلی است: حقوق جزای عمومی (اصول کلی جرم و مجازات) و حقوق جزای اختصاصی (جرائم خاص). یادگیری صحیح این رشته نیاز به ترتیب مشخصی دارد که در ادامه آمده است.
+    </div>
+    <div class="advisory-list">
+      <div class="advisory-item">
+        <div class="advisory-icon">🏗️</div>
+        <div class="advisory-body">
+          <div class="advisory-tag">گام اول</div>
+          <h4>از جزای عمومی شروع کنید</h4>
+          <p>پیش از هر چیز باید مفاهیم پایه‌ای مانند تعریف جرم، ارکان جرم، مسئولیت کیفری، علل رافع مسئولیت و انواع مجازات‌ها را خوب بفهمید. بدون این پایه، جزای اختصاصی قابل درک نیست.</p>
+        </div>
+      </div>
+      <div class="advisory-item">
+        <div class="advisory-icon">📜</div>
+        <div class="advisory-body">
+          <div class="advisory-tag">گام دوم</div>
+          <h4>قانون مجازات اسلامی را متن‌به‌متن بخوانید</h4>
+          <p>قانون مجازات اسلامی مصوب ۱۳۹۲ (به‌ویژه کتاب اول و دوم) را با دقت بخوانید. به درجه‌بندی مجازات‌های تعزیری (درجه ۱ تا ۸) توجه ویژه داشته باشید — این جدول در آزمون‌ها بسیار پرتکرار است.</p>
+        </div>
+      </div>
+      <div class="advisory-item">
+        <div class="advisory-icon">🔗</div>
+        <div class="advisory-body">
+          <div class="advisory-tag">گام سوم</div>
+          <h4>آیین دادرسی کیفری را موازی بخوانید</h4>
+          <p>حقوق جزای ماهوی (قانون مجازات) و شکلی (آیین دادرسی) لازم و ملزوم هم هستند. یادگیری مراحل دادرسی، وظایف دادسرا، ضابطین قضایی و مراحل اجرای احکام را با جزای ماهوی تلفیق کنید.</p>
+        </div>
+      </div>
+      <div class="advisory-item">
+        <div class="advisory-icon">📊</div>
+        <div class="advisory-body">
+          <div class="advisory-tag">گام چهارم</div>
+          <h4>جدول‌سازی برای جرائم مشابه</h4>
+          <p>در جزای اختصاصی جرائم مشابه زیاد هستند (مثلاً سرقت‌های مختلف). یک جدول مقایسه‌ای از جرائم هم‌خانواده بسازید که ارکان، مجازات و تفاوت‌های هر کدام را نشان دهد. این روش حفظ و درک همزمان را آسان می‌کند.</p>
+        </div>
+      </div>
+      <div class="advisory-item">
+        <div class="advisory-icon">⚡</div>
+        <div class="advisory-body">
+          <div class="advisory-tag">گام پنجم</div>
+          <h4>پرونده‌های واقعی را تحلیل کنید</h4>
+          <p>خواندن آرای دیوان‌عالی کشور و دادگاه‌های تجدیدنظر درک عملی حقوق جزا را عمیق می‌کند. نحوه استدلال قضات، استناد به مواد قانونی و تفسیر قانون در موارد مبهم را در این آرا مطالعه کنید.</p>
+        </div>
+      </div>
+      <div class="advisory-item">
+        <div class="advisory-icon">🎯</div>
+        <div class="advisory-body">
+          <div class="advisory-tag">نکته طلایی</div>
+          <h4>قانون به تنهایی کافی نیست — رویه قضایی مهم است</h4>
+          <p>در حقوق جزا، رویه قضایی نقش مهمی دارد. مواردی که قانون ساکت است یا نیاز به تفسیر دارد، با رویه دادگاه‌ها پر می‌شود. به کتاب‌های نظریات مشورتی اداره حقوقی قوه قضاییه توجه کنید.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1377,6 +1070,7 @@
   </div>
   <p>© ۱۴۰۴ موسسه آتیه‌سازان علوی — تمامی حقوق محفوظ است</p>
 </footer>
+
 <script>
   function switchQuizSubject(subjectId) {
     document.querySelectorAll('.quiz-subject-btn').forEach(function(b){ b.classList.remove('active'); });
@@ -1439,6 +1133,13 @@
     document.getElementById('result-' + subjectId).style.display = 'none';
     form.querySelector('.quiz-submit-btn').style.display = 'inline-block';
     form.querySelector('.quiz-retry-btn').style.display = 'none';
+  }
+
+  function switchAdvisory(tabId) {
+    document.querySelectorAll('.advisory-tab-btn').forEach(function(b){ b.classList.remove('active'); });
+    document.querySelector('.advisory-tab-btn[data-tab="' + tabId + '"]').classList.add('active');
+    document.querySelectorAll('.advisory-panel').forEach(function(p){ p.classList.remove('active'); });
+    document.getElementById(tabId).classList.add('active');
   }
 </script>
 
