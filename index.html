@@ -436,6 +436,72 @@
       margin-bottom: 0.5rem;
     }
 
+    /* ── FIELDS ── */
+    #fields { background: var(--bg); }
+    .fields-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+    }
+    .field-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem 2rem 1.8rem;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .field-card::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 100px; height: 100px;
+      background: radial-gradient(circle at top right, rgba(201,168,76,0.09), transparent 70%);
+    }
+    .field-card:hover { border-color: var(--gold-dim); transform: translateY(-4px); }
+    .field-icon {
+      width: 52px; height: 52px;
+      background: rgba(201,168,76,0.12);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.3rem;
+    }
+    .field-card h3 {
+      font-size: 1.15rem; font-weight: 800;
+      color: var(--white); margin-bottom: 1.2rem;
+      line-height: 1.4;
+    }
+    .field-section-label {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.5rem;
+    }
+    .field-tags {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-bottom: 1.4rem;
+    }
+    .field-tag {
+      background: rgba(201,168,76,0.09);
+      border: 1px solid rgba(201,168,76,0.2);
+      color: var(--text);
+      font-size: 0.78rem; font-weight: 500;
+      padding: 0.28rem 0.75rem;
+      border-radius: 100px;
+    }
+    .field-jobs {
+      display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .field-job-item {
+      display: flex; align-items: center; gap: 0.65rem;
+      font-size: 0.87rem; color: var(--muted); font-weight: 300;
+    }
+    .field-job-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold-dim); flex-shrink: 0;
+    }
+
     /* ── ABOUT ── */
     #about { background: var(--bg); }
     .about-inner {
@@ -556,6 +622,7 @@
     <li><a href="#movies">فیلم‌های حقوقی</a></li>
     <li><a href="#tips">نکات حقوقی</a></li>
     <li><a href="#advisory">نکات مشاوره‌ای</a></li>
+    <li><a href="#fields">گرایش‌های حقوق</a></li>
     <li><a href="#about">درباره ما</a></li>
     <li><a href="#contact">تماس</a></li>
   </ul>
@@ -973,6 +1040,56 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- FIELDS -->
+<section id="fields">
+  <div class="section-eyebrow">مسیرهای تخصصی</div>
+  <h2 class="section-title">گرایش‌های حقوق</h2>
+  <p class="section-sub">با آشنایی با گرایش‌های مختلف حقوق، مسیر تحصیلی و شغلی خود را با آگاهی بیشتری انتخاب کنید</p>
+  <div class="fields-grid">
+
+    <!-- حقوق خصوصی -->
+    <div class="field-card">
+      <div class="field-icon">📜</div>
+      <h3>حقوق خصوصی</h3>
+      <div class="field-section-label">درس‌های اصلی</div>
+      <div class="field-tags">
+        <span class="field-tag">حقوق مدنی پیشرفته</span>
+        <span class="field-tag">حقوق تجارت</span>
+        <span class="field-tag">تعهدات</span>
+        <span class="field-tag">داوری</span>
+      </div>
+      <div class="field-section-label">موقعیت‌های شغلی</div>
+      <div class="field-jobs">
+        <div class="field-job-item"><span class="field-job-dot"></span>وکالت</div>
+        <div class="field-job-item"><span class="field-job-dot"></span>قضاوت</div>
+        <div class="field-job-item"><span class="field-job-dot"></span>سردفتری</div>
+        <div class="field-job-item"><span class="field-job-dot"></span>مشاوره حقوقی شرکت‌ها</div>
+        <div class="field-job-item"><span class="field-job-dot"></span>تدریس دانشگاه</div>
+      </div>
+    </div>
+
+    <!-- حقوق جزا و جرم‌شناسی -->
+    <div class="field-card">
+      <div class="field-icon">⚖️</div>
+      <h3>حقوق جزا و جرم‌شناسی</h3>
+      <div class="field-section-label">درس‌های اصلی</div>
+      <div class="field-tags">
+        <span class="field-tag">حقوق جزای عمومی و اختصاصی</span>
+        <span class="field-tag">جرم‌شناسی</span>
+        <span class="field-tag">آیین دادرسی کیفری</span>
+      </div>
+      <div class="field-section-label">موقعیت‌های شغلی</div>
+      <div class="field-jobs">
+        <div class="field-job-item"><span class="field-job-dot"></span>وکیل کیفری</div>
+        <div class="field-job-item"><span class="field-job-dot"></span>قاضی</div>
+        <div class="field-job-item"><span class="field-job-dot"></span>دادستان</div>
+        <div class="field-job-item"><span class="field-job-dot"></span>مشاور حقوقی پرونده‌های کیفری</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
