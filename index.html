@@ -599,6 +599,88 @@
     footer p { font-size: 0.82rem; color: var(--muted); }
     .footer-logo { font-size: 0.95rem; font-weight: 700; color: var(--gold); }
 
+    /* ── LAW BANK (بانک قوانین) ── */
+    #lawbank { background: var(--surface); }
+    .lawbank-search {
+      display: flex; gap: 0.8rem; flex-wrap: wrap;
+      margin-bottom: 2rem; max-width: 640px;
+    }
+    .lawbank-search-input {
+      flex: 1; min-width: 220px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1.1rem;
+      color: var(--text);
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .lawbank-search-input:focus { border-color: var(--gold); }
+    .lawbank-search-input::placeholder { color: var(--muted); }
+    .lawbank-search-btn {
+      background: var(--gold); color: #000;
+      border: none; border-radius: 8px;
+      padding: 0.75rem 1.5rem;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.9rem; font-weight: 700;
+      cursor: pointer; transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .lawbank-search-btn:hover { opacity: 0.85; }
+
+    .lawbank-categories {
+      display: flex; gap: 0.7rem; flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .lawbank-cat-btn {
+      background: var(--card); color: var(--muted);
+      border: 1px solid var(--border); border-radius: 100px;
+      padding: 0.6rem 1.4rem;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.88rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .lawbank-cat-btn:hover { border-color: var(--gold-dim); color: var(--text); }
+    .lawbank-cat-btn.active { background: var(--gold); color: #000; border-color: var(--gold); }
+
+    .lawbank-set { display: none; }
+    .lawbank-set.active { display: block; }
+
+    .lawbank-articles {
+      display: flex; flex-direction: column; gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .lawbank-article-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem 1.6rem;
+      transition: border-color 0.2s;
+    }
+    .lawbank-article-card:hover { border-color: var(--gold-dim); }
+    .lawbank-article-num {
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--gold); margin-bottom: 0.5rem;
+    }
+    .lawbank-article-text {
+      font-size: 0.92rem; color: var(--text); font-weight: 300; line-height: 1.8;
+    }
+
+    .lawbank-empty {
+      display: block;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 300;
+      background: var(--card);
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      padding: 2.5rem 1.5rem;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -607,6 +689,9 @@
       .hero-stats { gap: 1.5rem; }
       .quiz-subjects { gap: 0.5rem; }
       .quiz-subject-btn { padding: 0.5rem 1rem; font-size: 0.82rem; }
+      .lawbank-categories { gap: 0.5rem; }
+      .lawbank-cat-btn { padding: 0.5rem 1rem; font-size: 0.82rem; }
+      .lawbank-search { flex-direction: column; }
     }
   </style>
 </head>
@@ -619,6 +704,7 @@
     <li><a href="#services">خدمات</a></li>
     <li><a href="#courses">دوره‌ها</a></li>
     <li><a href="#quiz">تست‌زنی</a></li>
+    <li><a href="#lawbank">بانک قوانین</a></li>
     <li><a href="#movies">فیلم‌های حقوقی</a></li>
     <li><a href="#tips">نکات حقوقی</a></li>
     <li><a href="#advisory">نکات مشاوره‌ای</a></li>
@@ -991,6 +1077,51 @@
         <div class="quiz-score-text" id="scoretext-tejarat"></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- LAW BANK -->
+<section id="lawbank">
+  <div class="section-eyebrow">بانک قوانین</div>
+  <div class="section-title">جست‌وجوی مواد قانونی</div>
+  <p class="section-sub">دسترسی سریع به مواد قوانین اصلی کشور بر اساس دسته‌بندی موضوعی</p>
+
+  <div class="lawbank-search">
+    <input type="text" id="lawbank-search-input" class="lawbank-search-input" placeholder="جست‌وجوی شماره یا متن ماده..." oninput="searchLawArticles()"/>
+    <button class="lawbank-search-btn" onclick="searchLawArticles()">🔍 جست‌وجو</button>
+  </div>
+
+  <div class="lawbank-categories">
+    <button class="lawbank-cat-btn active" data-cat="madani" onclick="switchLawCategory('madani')">قانون مدنی</button>
+    <button class="lawbank-cat-btn" data-cat="tejarat" onclick="switchLawCategory('tejarat')">قانون تجارت</button>
+    <button class="lawbank-cat-btn" data-cat="mojazat" onclick="switchLawCategory('mojazat')">قانون مجازات اسلامی</button>
+    <button class="lawbank-cat-btn" data-cat="adp-madani" onclick="switchLawCategory('adp-madani')">آیین دادرسی مدنی</button>
+    <button class="lawbank-cat-btn" data-cat="adp-keifari" onclick="switchLawCategory('adp-keifari')">آیین دادرسی کیفری</button>
+  </div>
+
+  <div class="lawbank-set active" id="lawbank-madani" data-cat-panel="madani">
+    <div class="lawbank-articles" id="lawbank-articles-madani"></div>
+    <div class="lawbank-empty">به‌زودی مواد این بخش تکمیل می‌شود.</div>
+  </div>
+
+  <div class="lawbank-set" id="lawbank-tejarat" data-cat-panel="tejarat">
+    <div class="lawbank-articles" id="lawbank-articles-tejarat"></div>
+    <div class="lawbank-empty">به‌زودی مواد این بخش تکمیل می‌شود.</div>
+  </div>
+
+  <div class="lawbank-set" id="lawbank-mojazat" data-cat-panel="mojazat">
+    <div class="lawbank-articles" id="lawbank-articles-mojazat"></div>
+    <div class="lawbank-empty">به‌زودی مواد این بخش تکمیل می‌شود.</div>
+  </div>
+
+  <div class="lawbank-set" id="lawbank-adp-madani" data-cat-panel="adp-madani">
+    <div class="lawbank-articles" id="lawbank-articles-adp-madani"></div>
+    <div class="lawbank-empty">به‌زودی مواد این بخش تکمیل می‌شود.</div>
+  </div>
+
+  <div class="lawbank-set" id="lawbank-adp-keifari" data-cat-panel="adp-keifari">
+    <div class="lawbank-articles" id="lawbank-articles-adp-keifari"></div>
+    <div class="lawbank-empty">به‌زودی مواد این بخش تکمیل می‌شود.</div>
   </div>
 </section>
 
@@ -1422,6 +1553,44 @@
     document.querySelector('.advisory-tab-btn[data-tab="' + tabId + '"]').classList.add('active');
     document.querySelectorAll('.advisory-panel').forEach(function(p){ p.classList.remove('active'); });
     document.getElementById(tabId).classList.add('active');
+  }
+
+  function switchLawCategory(catId) {
+    document.querySelectorAll('.lawbank-cat-btn').forEach(function(b){ b.classList.remove('active'); });
+    document.querySelector('.lawbank-cat-btn[data-cat="' + catId + '"]').classList.add('active');
+    document.querySelectorAll('.lawbank-set').forEach(function(s){ s.classList.remove('active'); });
+    document.getElementById('lawbank-' + catId).classList.add('active');
+    searchLawArticles();
+  }
+
+  function searchLawArticles() {
+    var input = document.getElementById('lawbank-search-input');
+    var query = input ? input.value.trim().toLowerCase() : '';
+    var activePanel = document.querySelector('.lawbank-set.active');
+    if (!activePanel) return;
+
+    var cards = activePanel.querySelectorAll('.lawbank-article-card');
+    var visibleCount = 0;
+
+    cards.forEach(function(card) {
+      var searchData = (card.getAttribute('data-search') || card.textContent || '').toLowerCase();
+      var match = query === '' || searchData.indexOf(query) !== -1;
+      card.style.display = match ? '' : 'none';
+      if (match) visibleCount++;
+    });
+
+    var emptyMsg = activePanel.querySelector('.lawbank-empty');
+    if (emptyMsg) {
+      if (cards.length === 0) {
+        emptyMsg.textContent = 'به‌زودی مواد این بخش تکمیل می‌شود.';
+        emptyMsg.style.display = 'block';
+      } else if (visibleCount === 0) {
+        emptyMsg.textContent = 'ماده‌ای با این عبارت یافت نشد.';
+        emptyMsg.style.display = 'block';
+      } else {
+        emptyMsg.style.display = 'none';
+      }
+    }
   }
 
 </script>
