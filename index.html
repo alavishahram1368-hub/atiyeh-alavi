@@ -825,6 +825,8 @@
     <button class="quiz-subject-btn active" data-subject="madani" onclick="switchQuizSubject('madani')">حقوق مدنی</button>
     <button class="quiz-subject-btn" data-subject="jaza" onclick="switchQuizSubject('jaza')">حقوق جزا</button>
     <button class="quiz-subject-btn" data-subject="tejarat" onclick="switchQuizSubject('tejarat')">حقوق تجارت</button>
+    <button class="quiz-subject-btn" data-subject="ayinmadani" onclick="switchQuizSubject('ayinmadani')">آیین دادرسی مدنی</button>
+    <button class="quiz-subject-btn" data-subject="ayinkeifari" onclick="switchQuizSubject('ayinkeifari')">آیین دادرسی کیفری</button>
   </div>
 
   <!-- مدنی -->
@@ -1668,6 +1670,36 @@
           <label class="quiz-option" data-val="d"><input type="radio" name="tejarat-q25" value="d"/> به سفته‌های قابل ظهرنویسی</label>
         </div>
       </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۲۶</div>
+        <div class="quiz-q-text">ورشکستگی تاجر در حقوق تجارت ایران به چه معناست؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="tejarat-q26" value="a"/> کاهش موقت سود تاجر در یک سال مالی</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="tejarat-q26" value="b"/> توقف تاجر از تأدیه قروض و تعهدات خود</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="tejarat-q26" value="c"/> انحلال اختیاری شرکت توسط شرکا</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="tejarat-q26" value="d"/> تغییر نام تجاری شرکت</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="c">
+        <div class="quiz-q-num">سوال ۲۷</div>
+        <div class="quiz-q-text">حداقل تعداد سهامداران برای تشکیل شرکت سهامی خاص چند نفر است؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="tejarat-q27" value="a"/> یک نفر</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="tejarat-q27" value="b"/> دو نفر</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="tejarat-q27" value="c"/> سه نفر</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="tejarat-q27" value="d"/> پنج نفر</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="a">
+        <div class="quiz-q-num">سوال ۲۸</div>
+        <div class="quiz-q-text">قبول برات توسط محال‌علیه چه اثری دارد؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="tejarat-q28" value="a"/> محال‌علیه را متعهد اصلی پرداخت وجه برات در سررسید می‌کند</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="tejarat-q28" value="b"/> برات را باطل می‌کند</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="tejarat-q28" value="c"/> صادرکننده را از مسئولیت بری می‌کند</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="tejarat-q28" value="d"/> فقط جنبه اطلاعی دارد و تعهدی ایجاد نمی‌کند</label>
+        </div>
+      </div>
       <div class="quiz-actions">
         <button class="quiz-submit-btn" onclick="gradeQuiz('tejarat')">ثبت پاسخ‌ها</button>
         <button class="quiz-retry-btn" onclick="resetQuiz('tejarat')">دوباره امتحان کن</button>
@@ -1675,6 +1707,134 @@
       <div class="quiz-result" id="result-tejarat">
         <div class="quiz-score-num" id="score-tejarat"></div>
         <div class="quiz-score-text" id="scoretext-tejarat"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- آیین دادرسی مدنی -->
+  <div class="quiz-set" id="quiz-ayinmadani">
+    <div id="form-ayinmadani">
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۱</div>
+        <div class="quiz-q-text">صلاحیت ذاتی دادگاه‌ها در آیین دادرسی مدنی بر چه مبنایی تعیین می‌شود؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinmadani-q1" value="a"/> محل اقامت خواهان</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinmadani-q1" value="b"/> نوع، اهمیت و درجه دادگاه رسیدگی‌کننده (مانند تفکیک دادگاه عمومی، انقلاب و تجدیدنظر)</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinmadani-q1" value="c"/> توافق طرفین دعوا</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinmadani-q1" value="d"/> محل وقوع مال غیرمنقول در همه دعاوی</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="c">
+        <div class="quiz-q-num">سوال ۲</div>
+        <div class="quiz-q-text">دادخواست باید به چه زبانی و در چه قالبی تقدیم دادگاه شود؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinmadani-q2" value="a"/> شفاهی و بدون تشریفات خاص</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinmadani-q2" value="b"/> فقط به‌صورت الکترونیکی</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinmadani-q2" value="c"/> کتباً و به زبان فارسی بر روی برگ‌های مخصوص دادخواست</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinmadani-q2" value="d"/> با حضور شاهد در دفترخانه</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="a">
+        <div class="quiz-q-num">سوال ۳</div>
+        <div class="quiz-q-text">اگر دادخواست ناقص باشد (مثلاً ضمائم کامل نباشد)، مدیر دفتر دادگاه چه اقدامی انجام می‌دهد؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinmadani-q3" value="a"/> ظرف دو روز اخطار رفع نقص صادر می‌کند و برای رفع نقص ده روز مهلت می‌دهد</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinmadani-q3" value="b"/> فوراً دادخواست را رد می‌کند بدون اعلام به خواهان</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinmadani-q3" value="c"/> پرونده را مستقیماً نزد قاضی بدون اخطار رفع نقص می‌فرستد</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinmadani-q3" value="d"/> از خواهان جزای نقدی مطالبه می‌کند</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="d">
+        <div class="quiz-q-num">سوال ۴</div>
+        <div class="quiz-q-text">مهلت تجدیدنظرخواهی نسبت به آرای دادگاه‌های نخستین برای اشخاص مقیم ایران چند روز است؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinmadani-q4" value="a"/> ۱۰ روز</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinmadani-q4" value="b"/> ۱۵ روز</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinmadani-q4" value="c"/> ۳۰ روز</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinmadani-q4" value="d"/> ۲۰ روز</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۵</div>
+        <div class="quiz-q-text">اجرای موقت حکم در مواردی که حکم قابل تجدیدنظر است، چه زمانی ممکن است؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinmadani-q5" value="a"/> هیچ‌گاه پیش از قطعیت حکم امکان اجرا نیست</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinmadani-q5" value="b"/> در موارد مصرح قانونی و با اخذ تأمین مناسب از محکوم‌له، دادگاه می‌تواند دستور اجرای موقت صادر کند</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinmadani-q5" value="c"/> فقط با رضایت محکوم‌علیه امکان دارد</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinmadani-q5" value="d"/> فقط در دعاوی مالی زیر یک میلیون تومان ممکن است</label>
+        </div>
+      </div>
+      <div class="quiz-actions">
+        <button class="quiz-submit-btn" onclick="gradeQuiz('ayinmadani')">ثبت پاسخ‌ها</button>
+        <button class="quiz-retry-btn" onclick="resetQuiz('ayinmadani')">دوباره امتحان کن</button>
+      </div>
+      <div class="quiz-result" id="result-ayinmadani">
+        <div class="quiz-score-num" id="score-ayinmadani"></div>
+        <div class="quiz-score-text" id="scoretext-ayinmadani"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- آیین دادرسی کیفری -->
+  <div class="quiz-set" id="quiz-ayinkeifari">
+    <div id="form-ayinkeifari">
+      <div class="quiz-question" data-correct="c">
+        <div class="quiz-q-num">سوال ۱</div>
+        <div class="quiz-q-text">تحقیقات مقدماتی در آیین دادرسی کیفری توسط چه مرجعی انجام می‌شود؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinkeifari-q1" value="a"/> دادگاه کیفری یک</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinkeifari-q1" value="b"/> هیأت منصفه</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinkeifari-q1" value="c"/> بازپرس یا دادیار دادسرا تحت نظارت دادستان</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinkeifari-q1" value="d"/> شورای حل اختلاف</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="a">
+        <div class="quiz-q-num">سوال ۲</div>
+        <div class="quiz-q-text">قرار بازداشت موقت متهم باید به تأیید کدام مقام برسد؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinkeifari-q2" value="a"/> دادستان</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinkeifari-q2" value="b"/> رئیس کلانتری</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinkeifari-q2" value="c"/> وکیل متهم</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinkeifari-q2" value="d"/> شاکی پرونده</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="d">
+        <div class="quiz-q-num">سوال ۳</div>
+        <div class="quiz-q-text">رسیدگی به جرائمی که مجازات قانونی آن‌ها سلب حیات یا حبس ابد است، در صلاحیت کدام دادگاه است؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinkeifari-q3" value="a"/> دادگاه کیفری دو</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinkeifari-q3" value="b"/> دادگاه انقلاب در همه موارد</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinkeifari-q3" value="c"/> شورای حل اختلاف</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinkeifari-q3" value="d"/> دادگاه کیفری یک</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۴</div>
+        <div class="quiz-q-text">حضور وکیل مدافع در جلسات تحقیق دادسرا طبق قانون آیین دادرسی کیفری چگونه است؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinkeifari-q4" value="a"/> در هیچ شرایطی مجاز نیست</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinkeifari-q4" value="b"/> به‌عنوان اصل، متهم حق دارد یک نفر وکیل همراه خود داشته باشد مگر در موارد استثنای قانونی</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinkeifari-q4" value="c"/> فقط در جرائم تعزیری درجه هفت و هشت مجاز است</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinkeifari-q4" value="d"/> فقط با حکم دادگاه عالی ممکن است</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="c">
+        <div class="quiz-q-num">سوال ۵</div>
+        <div class="quiz-q-text">اعاده دادرسی در امور کیفری چه نوع طریقه‌ای محسوب می‌شود؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinkeifari-q5" value="a"/> طریقه عادی شکایت از آرا مانند تجدیدنظر</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinkeifari-q5" value="b"/> مرحله‌ای از تحقیقات مقدماتی</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinkeifari-q5" value="c"/> طریقه فوق‌العاده شکایت از احکام قطعی در موارد مصرح قانونی</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinkeifari-q5" value="d"/> اقدامی که فقط شاکی می‌تواند درخواست کند</label>
+        </div>
+      </div>
+      <div class="quiz-actions">
+        <button class="quiz-submit-btn" onclick="gradeQuiz('ayinkeifari')">ثبت پاسخ‌ها</button>
+        <button class="quiz-retry-btn" onclick="resetQuiz('ayinkeifari')">دوباره امتحان کن</button>
+      </div>
+      <div class="quiz-result" id="result-ayinkeifari">
+        <div class="quiz-score-num" id="score-ayinkeifari"></div>
+        <div class="quiz-score-text" id="scoretext-ayinkeifari"></div>
       </div>
     </div>
   </div>
