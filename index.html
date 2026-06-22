@@ -147,6 +147,21 @@
     }
     .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.3rem; }
 
+    /* ── LIVE DATE/TIME BAR ── */
+    .live-datetime-bar {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      border: 1px solid var(--gold-dim);
+      background: rgba(201,168,76,0.08);
+      color: var(--gold);
+      font-size: 0.82rem; font-weight: 600;
+      padding: 0.45rem 1.3rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+      direction: rtl;
+    }
+    .live-datetime-bar .live-dt-sep { color: var(--gold-dim); font-weight: 400; }
+    .live-datetime-bar #live-time { color: var(--text); font-weight: 500; font-family: monospace; letter-spacing: 0.02em; }
+
     /* ── SECTIONS ── */
     section { padding: 90px 5%; }
     .section-eyebrow {
@@ -807,6 +822,11 @@
 
 <!-- HERO -->
 <section class="hero">
+  <div class="live-datetime-bar" id="live-datetime">
+    <span id="live-date">در حال بارگذاری تاریخ...</span>
+    <span class="live-dt-sep">|</span>
+    <span id="live-time">--:--:--</span>
+  </div>
   <div class="hero-badge">موسسه آتیه‌سازان علوی</div>
   <h1>راهنمای <em>تخصصی</em> حقوق<br/>در دستان متخصصین</h1>
   <p>خدمات حقوقی، آموزش و مشاوره تخصصی با بیش از ۱۵ سال تجربه در حوزه‌های مدنی، جزایی و تجاری</p>
@@ -1202,6 +1222,36 @@
           <label class="quiz-option" data-val="d"><input type="radio" name="madani-q28" value="d"/> فسخ قرارداد اجاره</label>
         </div>
       </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۲۹</div>
+        <div class="quiz-q-text">طبق ماده ۲ قانون مدنی، قوانین (در صورت عدم تعیین ترتیب خاص) چند روز پس از انتشار در سراسر کشور لازم‌الاجرا می‌شود؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="madani-q29" value="a"/> ۱۰ روز</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="madani-q29" value="b"/> ۱۵ روز</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="madani-q29" value="c"/> ۳۰ روز</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="madani-q29" value="d"/> ۶۰ روز</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="a">
+        <div class="quiz-q-num">سوال ۳۰</div>
+        <div class="quiz-q-text">طبق قانون مدنی، نکاح منقطع (موقت) در صورتی که مهر در آن ذکر نشده باشد، چه حکمی دارد؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="madani-q30" value="a"/> نکاح باطل است</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="madani-q30" value="b"/> نکاح صحیح است و زن مستحق مهرالمثل می‌شود</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="madani-q30" value="c"/> نکاح صحیح است و نیازی به مهر نیست</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="madani-q30" value="d"/> موضوع به تشخیص دادگاه واگذار می‌شود</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="c">
+        <div class="quiz-q-num">سوال ۳۱</div>
+        <div class="quiz-q-text">بر اساس تبصره ۱ ماده ۱۲۱۰ قانون مدنی، سن بلوغ شرعی پسران چند سال تمام قمری است؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="madani-q31" value="a"/> ۹ سال</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="madani-q31" value="b"/> ۱۲ سال</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="madani-q31" value="c"/> ۱۵ سال</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="madani-q31" value="d"/> ۱۸ سال</label>
+        </div>
+      </div>
       <div class="quiz-actions">
         <button class="quiz-submit-btn" onclick="gradeQuiz('madani')">ثبت پاسخ‌ها</button>
         <button class="quiz-retry-btn" onclick="resetQuiz('madani')">دوباره امتحان کن</button>
@@ -1494,6 +1544,36 @@
           <label class="quiz-option" data-val="b"><input type="radio" name="jaza-q28" value="b"/> دادگاه کیفری یک</label>
           <label class="quiz-option" data-val="c"><input type="radio" name="jaza-q28" value="c"/> دادگاه انقلاب فقط</label>
           <label class="quiz-option" data-val="d"><input type="radio" name="jaza-q28" value="d"/> شورای حل اختلاف</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۲۹</div>
+        <div class="quiz-q-text">طبق ماده ۱۴ قانون مجازات اسلامی، مجازات‌های مقرر در این قانون به چند دسته تقسیم می‌شوند؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="jaza-q29" value="a"/> سه دسته: حد، تعزیر و قصاص</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="jaza-q29" value="b"/> چهار دسته: حد، قصاص، دیه و تعزیر</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="jaza-q29" value="c"/> دو دسته: اصلی و تبعی</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="jaza-q29" value="d"/> پنج دسته جداگانه</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۳۰</div>
+        <div class="quiz-q-text">طبق قانون مجازات اسلامی، مرور زمان تعقیب، صدور حکم و اجرای حکم در کدام دسته از جرائم جاری نمی‌شود؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="jaza-q30" value="a"/> فقط جرائم تعزیری درجه هشت</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="jaza-q30" value="b"/> جرائم حدی، قصاص، دیه و جرائم علیه امنیت داخلی و خارجی کشور</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="jaza-q30" value="c"/> فقط جرائم غیرعمدی</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="jaza-q30" value="d"/> همه جرائم بدون استثنا مشمول مرور زمان می‌شوند</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۳۱</div>
+        <div class="quiz-q-text">بر اساس ماده ۱۴۶ قانون مجازات اسلامی، طفلی (فرد نابالغ) که مرتکب جرم می‌شود، از نظر کیفری چه وضعیتی دارد؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="jaza-q31" value="a"/> مانند بزرگسالان مجازات می‌شود</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="jaza-q31" value="b"/> مبرا از مسئولیت کیفری است و حسب مورد اقدامات تأمینی و تربیتی درباره او اجرا می‌شود</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="jaza-q31" value="c"/> فقط ملزم به پرداخت جزای نقدی است</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="jaza-q31" value="d"/> به زندان اطفال و نوجوانان منتقل می‌شود</label>
         </div>
       </div>
       <div class="quiz-actions">
@@ -1790,6 +1870,36 @@
           <label class="quiz-option" data-val="d"><input type="radio" name="tejarat-q28" value="d"/> فقط جنبه اطلاعی دارد و تعهدی ایجاد نمی‌کند</label>
         </div>
       </div>
+      <div class="quiz-question" data-correct="d">
+        <div class="quiz-q-num">سوال ۲۹</div>
+        <div class="quiz-q-text">کدام گزینه از جمله اسناد تجاری موضوع قانون تجارت ایران محسوب نمی‌شود؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="tejarat-q29" value="a"/> برات</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="tejarat-q29" value="b"/> سفته</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="tejarat-q29" value="c"/> چک</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="tejarat-q29" value="d"/> سهام بانام</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۳۰</div>
+        <div class="quiz-q-text">مسئولیت ظهرنویسان اسناد تجاری (برات، سفته، چک) در برابر دارنده سند چگونه است؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="tejarat-q30" value="a"/> فقط مسئولیت نسبی و جداگانه دارند</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="tejarat-q30" value="b"/> مسئولیت تضامنی دارند و دارنده می‌تواند به هر یک از آنها رجوع کند</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="tejarat-q30" value="c"/> هیچ مسئولیتی در برابر دارنده ندارند</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="tejarat-q30" value="d"/> فقط صادرکننده سند مسئول است</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۳۱</div>
+        <div class="quiz-q-text">در شرکت تضامنی، مسئولیت شرکا نسبت به قروض و تعهدات شرکت طبق قانون تجارت چگونه است؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="tejarat-q31" value="a"/> محدود به میزان سهم‌الشرکه هر شریک است</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="tejarat-q31" value="b"/> تضامنی است و نسبت به تمام بدهی‌های شرکت قابل مطالبه است</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="tejarat-q31" value="c"/> فقط مسئولیت اخلاقی دارند</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="tejarat-q31" value="d"/> هیچ مسئولیتی نسبت به بدهی شرکت ندارند</label>
+        </div>
+      </div>
       <div class="quiz-actions">
         <button class="quiz-submit-btn" onclick="gradeQuiz('tejarat')">ثبت پاسخ‌ها</button>
         <button class="quiz-retry-btn" onclick="resetQuiz('tejarat')">دوباره امتحان کن</button>
@@ -1854,6 +1964,36 @@
           <label class="quiz-option" data-val="d"><input type="radio" name="ayinmadani-q5" value="d"/> فقط در دعاوی مالی زیر یک میلیون تومان ممکن است</label>
         </div>
       </div>
+      <div class="quiz-question" data-correct="c">
+        <div class="quiz-q-num">سوال ۶</div>
+        <div class="quiz-q-text">مهلت واخواهی نسبت به رأی غیابی برای محکوم‌علیه مقیم ایران، از تاریخ ابلاغ واقعی یا قانونی چند روز است؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinmadani-q6" value="a"/> ۱۰ روز</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinmadani-q6" value="b"/> ۱۵ روز</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinmadani-q6" value="c"/> ۲۰ روز</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinmadani-q6" value="d"/> یک ماه</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۷</div>
+        <div class="quiz-q-text">«دستور موقت» در آیین دادرسی مدنی چه ویژگی دارد؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinmadani-q7" value="a"/> رأیی قطعی و غیرقابل تغییر است</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinmadani-q7" value="b"/> تصمیمی موقت برای رفع فوریت است که نیازی به اثبات کامل دعوا ندارد و منوط به تأمین مناسب است</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinmadani-q7" value="c"/> جایگزین رأی نهایی دادگاه می‌شود</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinmadani-q7" value="d"/> فقط در دعاوی مالی صادر می‌شود</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۸</div>
+        <div class="quiz-q-text">اعتراض ثالث در آیین دادرسی مدنی به چه منظور و توسط چه کسی مطرح می‌شود؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinmadani-q8" value="a"/> توسط یکی از طرفین اصلی دعوا برای اعاده دادرسی</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinmadani-q8" value="b"/> توسط شخص ثالثی که طرف دعوا نبوده ولی حکم صادره به حقوق او خلل وارد کرده است</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinmadani-q8" value="c"/> فقط در دعاوی کیفری کاربرد دارد</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinmadani-q8" value="d"/> جایگزین تجدیدنظرخواهی است</label>
+        </div>
+      </div>
       <div class="quiz-actions">
         <button class="quiz-submit-btn" onclick="gradeQuiz('ayinmadani')">ثبت پاسخ‌ها</button>
         <button class="quiz-retry-btn" onclick="resetQuiz('ayinmadani')">دوباره امتحان کن</button>
@@ -1916,6 +2056,36 @@
           <label class="quiz-option" data-val="b"><input type="radio" name="ayinkeifari-q5" value="b"/> مرحله‌ای از تحقیقات مقدماتی</label>
           <label class="quiz-option" data-val="c"><input type="radio" name="ayinkeifari-q5" value="c"/> طریقه فوق‌العاده شکایت از احکام قطعی در موارد مصرح قانونی</label>
           <label class="quiz-option" data-val="d"><input type="radio" name="ayinkeifari-q5" value="d"/> اقدامی که فقط شاکی می‌تواند درخواست کند</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۶</div>
+        <div class="quiz-q-text">«قرار منع تعقیب» توسط چه مقامی صادر می‌شود و به چه معناست؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinkeifari-q6" value="a"/> توسط دادگاه صادر می‌شود و به معنای محکومیت متهم است</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinkeifari-q6" value="b"/> توسط بازپرس یا دادیار در صورت فقدان دلیل کافی صادر و موکول به موافقت دادستان است</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinkeifari-q6" value="c"/> توسط شاکی پرونده صادر می‌شود</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinkeifari-q6" value="d"/> به معنای تعلیق اجرای مجازات است</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۷</div>
+        <div class="quiz-q-text">کیفرخواست توسط کدام مقام صادر می‌شود و چه اثری دارد؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinkeifari-q7" value="a"/> توسط بازپرس صادر و معادل حکم محکومیت است</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinkeifari-q7" value="b"/> توسط دادستان صادر می‌شود و به منزله ادعای ارتکاب جرم و درخواست رسیدگی از دادگاه است</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinkeifari-q7" value="c"/> توسط دادگاه صادر می‌شود</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinkeifari-q7" value="d"/> جایگزین تحقیقات مقدماتی است</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۸</div>
+        <div class="quiz-q-text">فرجام‌خواهی نسبت به آرای قابل فرجام دادگاه‌های کیفری در صلاحیت کدام مرجع است؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinkeifari-q8" value="a"/> دادگاه تجدیدنظر استان</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinkeifari-q8" value="b"/> دیوان عالی کشور</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinkeifari-q8" value="c"/> شورای حل اختلاف</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinkeifari-q8" value="d"/> دادسرای انتظامی قضات</label>
         </div>
       </div>
       <div class="quiz-actions">
@@ -3416,6 +3586,61 @@
   }
 
   gameUpdateHighscoreLine();
+
+  /* ── LIVE DATE/TIME (Jalali) ── */
+  var atiyehWeekdayNames = ['یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه','شنبه'];
+  var atiyehMonthNames = ['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'];
+
+  function atiyehToPersianDigits(input) {
+    var fa = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+    return String(input).replace(/[0-9]/g, function(d) { return fa[d]; });
+  }
+
+  function atiyehGregorianToJalali(gy, gm, gd) {
+    var g_d_m = [0,31,59,90,120,151,181,212,243,273,304,334];
+    var jy;
+    if (gy <= 1600) { jy = 0; gy -= 621; } else { jy = 979; gy -= 1600; }
+    var gy2 = (gm > 2) ? (gy + 1) : gy;
+    var days = (365 * gy) + parseInt((gy2 + 3) / 4, 10) - parseInt((gy2 + 99) / 100, 10) + parseInt((gy2 + 399) / 400, 10) - 80 + gd + g_d_m[gm - 1];
+    jy += 33 * parseInt(days / 12053, 10);
+    days %= 12053;
+    jy += 4 * parseInt(days / 1461, 10);
+    days %= 1461;
+    if (days > 365) {
+      jy += parseInt((days - 1) / 365, 10);
+      days = (days - 1) % 365;
+    }
+    var jm, jd;
+    if (days < 186) {
+      jm = 1 + parseInt(days / 31, 10);
+      jd = 1 + (days % 31);
+    } else {
+      jm = 7 + parseInt((days - 186) / 30, 10);
+      jd = 1 + ((days - 186) % 30);
+    }
+    return { jy: jy, jm: jm, jd: jd };
+  }
+
+  function atiyehUpdateLiveDateTime() {
+    var now = new Date();
+    var j = atiyehGregorianToJalali(now.getFullYear(), now.getMonth() + 1, now.getDate());
+    var weekday = atiyehWeekdayNames[now.getDay()];
+    var monthName = atiyehMonthNames[j.jm - 1];
+    var dateEl = document.getElementById('live-date');
+    var timeEl = document.getElementById('live-time');
+    if (dateEl) {
+      dateEl.textContent = weekday + ' ' + atiyehToPersianDigits(j.jd) + ' ' + monthName + ' ' + atiyehToPersianDigits(j.jy);
+    }
+    if (timeEl) {
+      var hh = String(now.getHours()).padStart(2, '0');
+      var mm = String(now.getMinutes()).padStart(2, '0');
+      var ss = String(now.getSeconds()).padStart(2, '0');
+      timeEl.textContent = atiyehToPersianDigits(hh + ':' + mm + ':' + ss);
+    }
+  }
+
+  atiyehUpdateLiveDateTime();
+  setInterval(atiyehUpdateLiveDateTime, 1000);
 
 </script>
 
