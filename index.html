@@ -924,6 +924,76 @@
       100% { opacity: 0; transform: translate(-50%, -90%) scale(1); }
     }
 
+    /* ── FLASHCARDS (فلش کارت حقوقی) ── */
+    #flashcards { background: var(--surface); }
+    .flash-categories { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+    .flash-cat-btn {
+      background: var(--card); color: var(--muted);
+      border: 1px solid var(--border); border-radius: 100px;
+      padding: 0.6rem 1.4rem;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.88rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .flash-cat-btn:hover { border-color: var(--gold-dim); color: var(--text); }
+    .flash-cat-btn.active { background: var(--gold); color: #000; border-color: var(--gold); }
+
+    .flash-counter { text-align: center; font-size: 0.85rem; color: var(--muted); font-weight: 600; margin-bottom: 1.3rem; }
+
+    .flash-stage { display: flex; justify-content: center; margin-bottom: 1.8rem; }
+    .flash-card {
+      width: 100%; max-width: 580px; height: 320px;
+      perspective: 1200px; cursor: pointer;
+    }
+    .flash-card-inner {
+      position: relative; width: 100%; height: 100%;
+      transition: transform 0.6s; transform-style: preserve-3d;
+    }
+    .flash-card-inner.flipped { transform: rotateY(180deg); }
+    .flash-card-face {
+      position: absolute; inset: 0;
+      backface-visibility: hidden;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem 1.8rem;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; overflow-y: auto;
+    }
+    .flash-card-back { transform: rotateY(180deg); border-color: var(--gold-dim); }
+    .flash-card-label {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .flash-card-text { font-size: 1.05rem; font-weight: 600; color: var(--white); line-height: 1.8; }
+    .flash-card-back .flash-card-text { font-weight: 300; font-size: 0.95rem; color: var(--text); }
+    .flash-card-tip {
+      margin-top: 1rem; font-size: 0.85rem; color: var(--gold);
+      background: rgba(201,168,76,0.08); border: 1px dashed var(--gold-dim);
+      border-radius: 8px; padding: 0.7rem 1rem; line-height: 1.7;
+    }
+    .flash-card-hint { margin-top: 1.3rem; font-size: 0.78rem; color: var(--muted); }
+
+    .flash-empty {
+      display: none; text-align: center; color: var(--muted);
+      font-size: 0.92rem; font-weight: 300;
+      background: var(--card); border: 1px dashed var(--border);
+      border-radius: 10px; padding: 2.5rem 1.5rem;
+      width: 100%; max-width: 580px;
+    }
+
+    .flash-controls { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+    .flash-ctrl-btn {
+      background: var(--card); color: var(--text);
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 0.75rem 1.4rem;
+      font-family: 'Vazirmatn', sans-serif; font-size: 0.88rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .flash-ctrl-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .flash-ctrl-random { background: var(--gold); color: #000; border-color: var(--gold); }
+    .flash-ctrl-random:hover { opacity: 0.85; color: #000; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -937,6 +1007,11 @@
       .lawbank-search { flex-direction: column; }
       .game-card { padding: 1.6rem 1.2rem; }
       .game-end-score { font-size: 2.4rem; }
+      .flash-categories { gap: 0.5rem; }
+      .flash-cat-btn { padding: 0.5rem 1rem; font-size: 0.82rem; }
+      .flash-card { height: 380px; }
+      .flash-controls { flex-direction: column; }
+      .flash-ctrl-btn { width: 100%; }
     }
   </style>
 </head>
@@ -951,6 +1026,7 @@
     <li><a href="#quiz">تست‌زنی</a></li>
     <li><a href="#legalgame">بازی حقوقی</a></li>
     <li><a href="#lawbank">بانک قوانین</a></li>
+    <li><a href="#flashcards">فلش کارت</a></li>
     <li><a href="#movies">فیلم‌های حقوقی</a></li>
     <li><a href="#tips">نکات حقوقی</a></li>
     <li><a href="#advisory">نکات مشاوره‌ای</a></li>
@@ -3484,6 +3560,47 @@
   </div>
 </section>
 
+<!-- LEGAL FLASHCARDS -->
+<section id="flashcards">
+  <div class="section-eyebrow">فلش کارت حقوقی</div>
+  <div class="section-title">یادگیری سریع با فلش کارت</div>
+  <p class="section-sub">روی کارت کلیک کنید تا پاسخ و نکته آزمونی نمایش داده شود</p>
+
+  <div class="flash-categories">
+    <button class="flash-cat-btn active" data-flashcat="madani" onclick="switchFlashCategory('madani')">حقوق مدنی</button>
+    <button class="flash-cat-btn" data-flashcat="tejarat" onclick="switchFlashCategory('tejarat')">حقوق تجارت</button>
+    <button class="flash-cat-btn" data-flashcat="jaza" onclick="switchFlashCategory('jaza')">حقوق جزا</button>
+    <button class="flash-cat-btn" data-flashcat="adpmadani" onclick="switchFlashCategory('adpmadani')">آیین دادرسی مدنی</button>
+    <button class="flash-cat-btn" data-flashcat="adpkeifari" onclick="switchFlashCategory('adpkeifari')">آیین دادرسی کیفری</button>
+  </div>
+
+  <div class="flash-counter" id="flash-counter">کارت ۱ از ۲۰</div>
+
+  <div class="flash-stage">
+    <div class="flash-card" id="flash-card" onclick="flipFlashCard()">
+      <div class="flash-card-inner" id="flash-card-inner">
+        <div class="flash-card-face flash-card-front">
+          <span class="flash-card-label">سوال</span>
+          <div class="flash-card-text" id="flash-front-text"></div>
+          <span class="flash-card-hint">برای دیدن پاسخ کلیک کنید</span>
+        </div>
+        <div class="flash-card-face flash-card-back">
+          <span class="flash-card-label">پاسخ</span>
+          <div class="flash-card-text" id="flash-back-text"></div>
+          <div class="flash-card-tip" id="flash-back-tip"></div>
+        </div>
+      </div>
+    </div>
+    <div class="flash-empty" id="flash-empty">به‌زودی فلش کارت‌های این بخش اضافه می‌شود.</div>
+  </div>
+
+  <div class="flash-controls">
+    <button class="flash-ctrl-btn" onclick="flashPrev()">◀ کارت قبلی</button>
+    <button class="flash-ctrl-btn flash-ctrl-random" onclick="flashRandom()">🔀 نمایش تصادفی</button>
+    <button class="flash-ctrl-btn" onclick="flashNext()">کارت بعدی ▶</button>
+  </div>
+</section>
+
 <!-- LEGAL MOVIES -->
 <section id="movies">
   <div class="section-eyebrow">فیلم‌های حقوقی</div>
@@ -4135,6 +4252,103 @@
       }
     }
   }
+
+  /* ===== فلش کارت حقوقی ===== */
+  var flashcardBank = {
+    madani: [
+      { q: "تعریف عقد در حقوق مدنی چیست؟", a: "عقد عبارت است از این‌که یک یا چند نفر در مقابل یک یا چند نفر دیگر تعهد بر امری نمایند و مورد قبول آن‌ها باشد (ماده ۱۸۳ قانون مدنی).", tip: "عقد را با تعهد یک‌طرفه اشتباه نگیرید؛ عقد همواره توافق دو یا چند اراده است." },
+      { q: "شرایط اساسی صحت معامله طبق ماده ۱۹۰ قانون مدنی کدام‌اند؟", a: "قصد طرفین و رضای آن‌ها، اهلیت طرفین، موضوع معین که مورد معامله باشد و مشروعیت جهت معامله.", tip: "کتبی بودن قرارداد جزء شرایط صحت معامله نیست؛ این گزینه فریب‌دهنده در آزمون‌ها زیاد تکرار می‌شود." },
+      { q: "تفاوت عقد لازم و عقد جایز چیست؟", a: "در عقد لازم هیچ‌یک از طرفین حق فسخ یکجانبه ندارد مگر به دلایل قانونی، اما در عقد جایز هر یک از طرفین می‌تواند هر زمان آن را فسخ کند.", tip: "عقد وکالت و عاریه از نمونه‌های کلاسیک عقد جایز هستند." },
+      { q: "خیار در حقوق مدنی چیست؟", a: "خیار حقی است که به موجب قانون یا توافق طرفین به یکی از طرفین یا هر دو داده می‌شود تا عقد را فسخ کنند.", tip: "انواع خیارات (مجلس، حیوان، شرط، عیب، غبن و...) را همراه با مدت و شرایط هرکدام جدا حفظ کنید." },
+      { q: "مهلت خیار مجلس تا چه زمانی است؟", a: "خیار مجلس تا زمانی است که طرفین معامله از مجلس (محل) عقد متفرق نشده‌اند.", tip: "خیار مجلس فقط در عقد بیع وجود دارد، نه در همه عقود." },
+      { q: "اهلیت چیست و فاقد اهلیت کیست؟", a: "اهلیت یعنی صلاحیت شخص برای دارا شدن حق و اجرای آن. صغیر، غیررشید و مجنون فاقد اهلیت لازم برای انجام معاملات هستند.", tip: "صغیر ممیز با اجازه ولی یا قیم می‌تواند برخی معاملات را انجام دهد؛ این را با صغیر غیرممیز اشتباه نگیرید." },
+      { q: "ارکان اصلی عقد بیع کدام‌اند؟", a: "ایجاب و قبول، مبیع (مورد معامله) و ثمن (قیمت).", tip: "شهادت شهود رکن عقد بیع نیست؛ صرفاً یکی از ادله اثبات دعوی محسوب می‌شود." },
+      { q: "غبن فاحش چیست؟", a: "غبن فاحش یعنی تفاوت قیمت واقعی مورد معامله با قیمت تعیین‌شده در معامله، به‌حدی زیاد باشد که عرفاً قابل چشم‌پوشی نباشد.", tip: "مغبون باید هنگام معامله از قیمت واقعی بی‌اطلاع بوده باشد تا خیار غبن برایش ثابت شود." },
+      { q: "وقف چیست؟", a: "وقف عبارت است از این‌که عین مال حبس و منافع آن تسبیل شود؛ یعنی عین مال باقی می‌ماند و منافع آن در راه خیر صرف می‌شود.", tip: "وقف برای امور نامشروع یا غیرقانونی باطل است." },
+      { q: "شرایط اساسی صحت وقف کدام‌اند؟", a: "قصد قربت واقف، تنجیز (عدم تعلیق)، قبض، و دوام مال موقوفه.", tip: "وقف اموالی که قابل دوام نیستند (مانند خوراکی) صحیح نمی‌باشد." },
+      { q: "طبقات ارث در قانون مدنی ایران چندتاست؟", a: "سه طبقه: طبقه اول (پدر، مادر، اولاد)، طبقه دوم (اجداد، برادر و خواهر)، طبقه سوم (اعمام، اخوال و فرزندان آن‌ها).", tip: "وجود وارث در یک طبقه، مانع ارث‌بری طبقات بعدی می‌شود." },
+      { q: "زوج و زوجه در کدام طبقه ارث قرار می‌گیرند؟", a: "زوج و زوجه در هیچ طبقه‌ای قرار نمی‌گیرند و همراه با هر طبقه‌ای که وارث باشد، ارث می‌برند.", tip: "سهم زوجه از اموال غیرمنقول معمولاً از قیمت است نه از عین؛ این تفاوت زوج و زوجه در آزمون پرتکرار است." },
+      { q: "حداقل سن ازدواج برای دختران در قانون مدنی ایران چقدر است؟", a: "۱۳ سال تمام شمسی؛ ازدواج زودتر از آن منوط به تشخیص دادگاه و رعایت مصلحت است.", tip: "برای پسران این سن ۱۵ سال تمام شمسی است." },
+      { q: "نکاح منقطع (موقت) چه تفاوتی با نکاح دائم دارد؟", a: "در نکاح موقت مدت ازدواج معین می‌شود و با پایان مدت، نکاح خودبه‌خود منحل می‌گردد؛ در نکاح دائم چنین مدتی وجود ندارد.", tip: "در نکاح موقت، عدم ذکر مهر باعث بطلان عقد می‌شود، برخلاف نکاح دائم." },
+      { q: "مهریه چیست و انواع آن کدام‌اند؟", a: "مهریه مالی است که زوج در ازای نکاح متعهد به پرداخت آن به زوجه می‌شود؛ به دو نوع مهر عندالمطالبه و عندالاستطاعه تقسیم می‌شود.", tip: "عدم ذکر مهر در نکاح دائم باطل‌کننده عقد نیست؛ زوجه مستحق مهرالمثل خواهد بود." },
+      { q: "مرور زمان (تقادم) در قانون مدنی به چه معناست؟", a: "گذشت مدت معینی که قانون برای اقامه برخی دعاوی تعیین کرده و پس از سپری‌شدن آن مدت، طرح دعوا با ایراد مواجه می‌شود.", tip: "در نظام حقوقی فعلی ایران، مرور زمان به‌طور کلی پذیرفته نشده و موارد آن باید صریحاً در قانون آمده باشد." },
+      { q: "تفاوت غصب و اتلاف چیست؟", a: "غصب یعنی تصرف مال دیگری بدون مجوز قانونی، در حالی که اتلاف یعنی از بین بردن مستقیم مال دیگری بدون لزوم تصرف قبلی.", tip: "در غصب، غاصب علاوه بر عین، ضامن منافع مستوفات و غیرمستوفات نیز هست." },
+      { q: "ضمان قهری شامل چه مواردی می‌شود؟", a: "غصب، اتلاف، تسبیب و استیفای نامشروع از مهم‌ترین مصادیق ضمان قهری در قانون مدنی هستند.", tip: "ضمان قهری برخلاف ضمان قراردادی، ناشی از قرارداد نیست بلکه مستقیماً از قانون ناشی می‌شود." },
+      { q: "حجر چیست و موارد آن کدام‌اند؟", a: "حجر یعنی محروم بودن شخص از حق دخالت مستقیم در امور مالی خود؛ موارد آن صغر (کودکی)، جنون و سفه (عدم رشد) است.", tip: "محجورین برای انجام معاملات خود نیاز به ولی یا قیم دارند؛ تفاوت ولایت و قیمومت را مرور کنید." },
+      { q: "تعهد طبیعی چیست؟", a: "تعهدی است که اجرای آن از نظر اخلاقی یا اجتماعی پسندیده است اما متعهد قانوناً ملزم به اجرای آن نیست؛ اگر داوطلبانه ایفا شود، قابل استرداد نیست.", tip: "تعهد طبیعی را با تعهد اخلاقی صرف اشتباه نگیرید؛ تعهد طبیعی در صورت ایفا، اثر حقوقی دارد." }
+    ],
+    tejarat: [],
+    jaza: [],
+    adpmadani: [],
+    adpkeifari: []
+  };
+
+  var flashState = { cat: 'madani', index: 0 };
+
+  function renderFlashCard() {
+    var list = flashcardBank[flashState.cat] || [];
+    var stage = document.getElementById('flash-card');
+    var empty = document.getElementById('flash-empty');
+    var counter = document.getElementById('flash-counter');
+    var inner = document.getElementById('flash-card-inner');
+    if (!stage || !empty || !counter || !inner) return;
+
+    if (list.length === 0) {
+      stage.style.display = 'none';
+      empty.style.display = 'block';
+      counter.textContent = 'این بخش هنوز فلش کارتی ندارد';
+      return;
+    }
+
+    stage.style.display = 'block';
+    empty.style.display = 'none';
+
+    if (flashState.index >= list.length) flashState.index = 0;
+    if (flashState.index < 0) flashState.index = list.length - 1;
+
+    var item = list[flashState.index];
+    inner.classList.remove('flipped');
+    document.getElementById('flash-front-text').textContent = item.q;
+    document.getElementById('flash-back-text').textContent = item.a;
+    document.getElementById('flash-back-tip').textContent = item.tip ? ('💡 نکته آزمونی: ' + item.tip) : '';
+    counter.textContent = 'کارت ' + (flashState.index + 1).toLocaleString('fa-IR') + ' از ' + list.length.toLocaleString('fa-IR');
+  }
+
+  function switchFlashCategory(catId) {
+    document.querySelectorAll('.flash-cat-btn').forEach(function(b){ b.classList.remove('active'); });
+    document.querySelector('.flash-cat-btn[data-flashcat="' + catId + '"]').classList.add('active');
+    flashState.cat = catId;
+    flashState.index = 0;
+    renderFlashCard();
+  }
+
+  function flipFlashCard() {
+    var inner = document.getElementById('flash-card-inner');
+    if (inner) inner.classList.toggle('flipped');
+  }
+
+  function flashNext() {
+    flashState.index++;
+    renderFlashCard();
+  }
+
+  function flashPrev() {
+    flashState.index--;
+    renderFlashCard();
+  }
+
+  function flashRandom() {
+    var list = flashcardBank[flashState.cat] || [];
+    if (list.length <= 1) { renderFlashCard(); return; }
+    var newIndex;
+    do { newIndex = Math.floor(Math.random() * list.length); } while (newIndex === flashState.index);
+    flashState.index = newIndex;
+    renderFlashCard();
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    renderFlashCard();
+  });
 
   /* ===== LEGAL GAME: مأموریت وکیل ===== */
   var gameSettings = {
