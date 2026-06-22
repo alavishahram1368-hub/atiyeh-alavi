@@ -250,6 +250,56 @@
     }
     .course-meta span { display: flex; align-items: center; gap: 0.3rem; }
 
+    /* ── ARTICLES (مقالات) ── */
+    #articles { background: var(--bg); }
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.2rem;
+    }
+    .article-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.8rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .article-card:hover { border-color: var(--gold-dim); transform: translateY(-4px); }
+    .article-tag {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(201,168,76,0.1);
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+      display: inline-block; margin-bottom: 1rem;
+    }
+    .article-card h3 {
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--white); margin-bottom: 0.5rem;
+    }
+    .article-card p { font-size: 0.88rem; color: var(--muted); font-weight: 300; margin-bottom: 1.2rem; }
+    .article-meta {
+      display: flex; gap: 1.2rem;
+      font-size: 0.8rem; color: var(--muted);
+      border-top: 1px solid var(--border);
+      padding-top: 1rem; margin-top: 0.5rem;
+    }
+    .article-meta span { display: flex; align-items: center; gap: 0.3rem; }
+    .articles-more-wrap { text-align: center; margin-top: 2rem; }
+    .articles-more-btn {
+      display: inline-block;
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+      padding: 0.7rem 1.8rem;
+      border-radius: 100px;
+      font-size: 0.88rem; font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .articles-more-btn:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+
     /* ── LEGAL TIPS ── */
     #tips { background: var(--surface); }
     .tips-list { display: flex; flex-direction: column; gap: 1rem; max-width: 800px; }
@@ -814,6 +864,7 @@
     <li><a href="#tips">نکات حقوقی</a></li>
     <li><a href="#advisory">نکات مشاوره‌ای</a></li>
     <li><a href="#fields">گرایش‌های حقوق</a></li>
+    <li><a href="#articles">مقالات</a></li>
     <li><a href="#about">درباره ما</a></li>
     <li><a href="#contact">تماس</a></li>
   </ul>
@@ -1252,6 +1303,36 @@
           <label class="quiz-option" data-val="d"><input type="radio" name="madani-q31" value="d"/> ۱۸ سال</label>
         </div>
       </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۳۲</div>
+        <div class="quiz-q-text">عقد ضمان به چه معناست؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="madani-q32" value="a"/> تعهد به انجام کاری برای دیگری</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="madani-q32" value="b"/> تعهدی که شخصی، مالی را که بر ذمه دیگری است، به عهده می‌گیرد</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="madani-q32" value="c"/> واگذاری مال به دیگری در ازای عوض معین</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="madani-q32" value="d"/> اجاره دادن منافع مال غیرمنقول</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="c">
+        <div class="quiz-q-num">سوال ۳۳</div>
+        <div class="quiz-q-text">غصب در قانون مدنی ایران به چه معناست و چه ضمانتی برای غاصب ایجاد می‌کند؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="madani-q33" value="a"/> تصرف با اجازه مالک که هیچ مسئولیتی ایجاد نمی‌کند</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="madani-q33" value="b"/> فقط شامل اموال غیرمنقول می‌شود</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="madani-q33" value="c"/> استیلای بر حق غیر بدون مجوز قانونی که غاصب را ضامن عین و منافع مال می‌کند</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="madani-q33" value="d"/> نوعی از عقود معین است</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="a">
+        <div class="quiz-q-num">سوال ۳۴</div>
+        <div class="quiz-q-text">کدام‌یک از اشخاص زیر طبق قانون مدنی، محجور (فاقد اهلیت استیفا) محسوب می‌شود؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="madani-q34" value="a"/> صغیر، غیررشید و مجنون</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="madani-q34" value="b"/> هر فرد بالای ۱۸ سال</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="madani-q34" value="c"/> اشخاص حقوقی به‌طور مطلق</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="madani-q34" value="d"/> افراد متاهل</label>
+        </div>
+      </div>
       <div class="quiz-actions">
         <button class="quiz-submit-btn" onclick="gradeQuiz('madani')">ثبت پاسخ‌ها</button>
         <button class="quiz-retry-btn" onclick="resetQuiz('madani')">دوباره امتحان کن</button>
@@ -1574,6 +1655,36 @@
           <label class="quiz-option" data-val="b"><input type="radio" name="jaza-q31" value="b"/> مبرا از مسئولیت کیفری است و حسب مورد اقدامات تأمینی و تربیتی درباره او اجرا می‌شود</label>
           <label class="quiz-option" data-val="c"><input type="radio" name="jaza-q31" value="c"/> فقط ملزم به پرداخت جزای نقدی است</label>
           <label class="quiz-option" data-val="d"><input type="radio" name="jaza-q31" value="d"/> به زندان اطفال و نوجوانان منتقل می‌شود</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۳۲</div>
+        <div class="quiz-q-text">دفاع مشروع در قانون مجازات اسلامی تحت چه شرایطی مجاز است؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="jaza-q32" value="a"/> در هر شرایطی و بدون قید و شرط</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="jaza-q32" value="b"/> در برابر خطر فعلی یا قریب‌الوقوع، با تناسب دفاع و نبود راه فرار دیگر</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="jaza-q32" value="c"/> فقط برای دفاع از اموال</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="jaza-q32" value="d"/> فقط در صورت اجازه قبلی دادستان</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="c">
+        <div class="quiz-q-num">سوال ۳۳</div>
+        <div class="quiz-q-text">«شروع به جرم» در قانون مجازات اسلامی به چه معناست؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="jaza-q33" value="a"/> ارتکاب کامل جرم با تمام نتایج آن</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="jaza-q33" value="b"/> صرف قصد ذهنی ارتکاب جرم بدون هیچ اقدامی</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="jaza-q33" value="c"/> انجام اقدامات اجرایی جرم که به دلیل عامل خارجی به نتیجه نرسد</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="jaza-q33" value="d"/> منصرف شدن کامل از قصد ارتکاب جرم</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۳۴</div>
+        <div class="quiz-q-text">تکرار جرم چه تأثیری در تعیین مجازات مرتکب دارد؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="jaza-q34" value="a"/> هیچ تأثیری در مجازات ندارد</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="jaza-q34" value="b"/> می‌تواند از علل تشدید مجازات محسوب شود</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="jaza-q34" value="c"/> همواره موجب معافیت از مجازات می‌شود</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="jaza-q34" value="d"/> فقط در جرائم تعزیری درجه هشت اعمال می‌شود</label>
         </div>
       </div>
       <div class="quiz-actions">
@@ -1900,6 +2011,36 @@
           <label class="quiz-option" data-val="d"><input type="radio" name="tejarat-q31" value="d"/> هیچ مسئولیتی نسبت به بدهی شرکت ندارند</label>
         </div>
       </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۳۲</div>
+        <div class="quiz-q-text">ورشکستگی تاجر طبق قانون تجارت ایران چه زمانی محقق می‌شود؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="tejarat-q32" value="a"/> با اولین تأخیر در پرداخت یک قسط</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="tejarat-q32" value="b"/> در نتیجه توقف از تأدیه وجوهی که بر عهده اوست</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="tejarat-q32" value="c"/> فقط با درخواست طلبکاران و بدون نیاز به حکم دادگاه</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="tejarat-q32" value="d"/> با فوت تاجر</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="a">
+        <div class="quiz-q-num">سوال ۳۳</div>
+        <div class="quiz-q-text">مسئولیت سهامداران در شرکت سهامی نسبت به بدهی‌های شرکت چگونه است؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="tejarat-q33" value="a"/> محدود به مبلغ اسمی سهام آنهاست</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="tejarat-q33" value="b"/> تضامنی و نسبت به کل بدهی‌هاست</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="tejarat-q33" value="c"/> هیچ مسئولیتی ندارند حتی به اندازه سهام</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="tejarat-q33" value="d"/> به اندازه دو برابر سهام است</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="d">
+        <div class="quiz-q-num">سوال ۳۴</div>
+        <div class="quiz-q-text">طبق قانون تجارت، نگهداری دفاتر تجاری (مانند دفتر روزنامه و کل) برای کدام دسته الزامی است؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="tejarat-q34" value="a"/> فقط شرکت‌های سهامی عام</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="tejarat-q34" value="b"/> فقط بانک‌ها</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="tejarat-q34" value="c"/> هیچ‌کس، زیرا اختیاری است</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="tejarat-q34" value="d"/> هر تاجر اعم از شخص حقیقی یا حقوقی</label>
+        </div>
+      </div>
       <div class="quiz-actions">
         <button class="quiz-submit-btn" onclick="gradeQuiz('tejarat')">ثبت پاسخ‌ها</button>
         <button class="quiz-retry-btn" onclick="resetQuiz('tejarat')">دوباره امتحان کن</button>
@@ -1994,6 +2135,36 @@
           <label class="quiz-option" data-val="d"><input type="radio" name="ayinmadani-q8" value="d"/> جایگزین تجدیدنظرخواهی است</label>
         </div>
       </div>
+      <div class="quiz-question" data-correct="c">
+        <div class="quiz-q-num">سوال ۹</div>
+        <div class="quiz-q-text">رأی داور صادره طبق موافقت‌نامه داوری، نسبت به طرفین چه اعتباری دارد؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinmadani-q9" value="a"/> صرفاً پیشنهادی است و الزامی برای طرفین ندارد</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinmadani-q9" value="b"/> فقط جنبه مشورتی دارد</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinmadani-q9" value="c"/> در حدود مقررات قانونی، در موارد معین، قطعی و لازم‌الاجراست</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinmadani-q9" value="d"/> همواره قابل تجدیدنظر در دادگاه است</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۱۰</div>
+        <div class="quiz-q-text">«تأمین خواسته» در آیین دادرسی مدنی چه هدفی را دنبال می‌کند؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinmadani-q10" value="a"/> اثبات نهایی ادعای خواهان</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinmadani-q10" value="b"/> توقیف اموال خوانده پیش از صدور حکم برای تضمین اجرای حکم احتمالی آینده</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinmadani-q10" value="c"/> صدور حکم قطعی بدون رسیدگی</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinmadani-q10" value="d"/> جایگزینی برای دادخواست اصلی</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="a">
+        <div class="quiz-q-num">سوال ۱۱</div>
+        <div class="quiz-q-text">اعاده دادرسی نسبت به احکام قطعی در کدام حالت قابل پذیرش است؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinmadani-q11" value="a"/> در موارد مصرح قانونی مانند کشف اسناد جدید یا مغایرت حکم با قوانین موجد حق</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinmadani-q11" value="b"/> در هر زمان و بدون هیچ شرطی</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinmadani-q11" value="c"/> فقط با رضایت طرف مقابل</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinmadani-q11" value="d"/> فقط نسبت به آرای غیابی</label>
+        </div>
+      </div>
       <div class="quiz-actions">
         <button class="quiz-submit-btn" onclick="gradeQuiz('ayinmadani')">ثبت پاسخ‌ها</button>
         <button class="quiz-retry-btn" onclick="resetQuiz('ayinmadani')">دوباره امتحان کن</button>
@@ -2086,6 +2257,36 @@
           <label class="quiz-option" data-val="b"><input type="radio" name="ayinkeifari-q8" value="b"/> دیوان عالی کشور</label>
           <label class="quiz-option" data-val="c"><input type="radio" name="ayinkeifari-q8" value="c"/> شورای حل اختلاف</label>
           <label class="quiz-option" data-val="d"><input type="radio" name="ayinkeifari-q8" value="d"/> دادسرای انتظامی قضات</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="d">
+        <div class="quiz-q-num">سوال ۹</div>
+        <div class="quiz-q-text">گذشت شاکی خصوصی در جرائم قابل گذشت چه اثری بر تعقیب کیفری دارد؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinkeifari-q9" value="a"/> هیچ تأثیری ندارد و تعقیب ادامه می‌یابد</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinkeifari-q9" value="b"/> فقط مجازات را تخفیف می‌دهد</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinkeifari-q9" value="c"/> فقط در مرحله دادسرا قابل پذیرش است</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinkeifari-q9" value="d"/> موجب موقوف شدن تعقیب یا اجرای مجازات می‌شود</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="b">
+        <div class="quiz-q-num">سوال ۱۰</div>
+        <div class="quiz-q-text">بازرسی و تفتیش منازل اشخاص طبق قانون آیین دادرسی کیفری مستلزم چه شرطی است؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinkeifari-q10" value="a"/> هیچ مجوزی لازم نیست و ضابطین می‌توانند آزادانه اقدام کنند</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinkeifari-q10" value="b"/> باید با اجازه مخصوص مقام قضایی صورت گیرد، هرچند مقام قضایی می‌تواند خود اقدام کند</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinkeifari-q10" value="c"/> فقط با رضایت کتبی صاحب‌خانه ممکن است</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinkeifari-q10" value="d"/> فقط در روز و با حضور شهردار محل امکان دارد</label>
+        </div>
+      </div>
+      <div class="quiz-question" data-correct="c">
+        <div class="quiz-q-num">سوال ۱۱</div>
+        <div class="quiz-q-text">رسیدگی به جرائم اطفال و نوجوانان طبق قانون آیین دادرسی کیفری در صلاحیت کدام مرجع است؟</div>
+        <div class="quiz-options">
+          <label class="quiz-option" data-val="a"><input type="radio" name="ayinkeifari-q11" value="a"/> دادگاه کیفری یک به‌طور مطلق</label>
+          <label class="quiz-option" data-val="b"><input type="radio" name="ayinkeifari-q11" value="b"/> شورای حل اختلاف</label>
+          <label class="quiz-option" data-val="c"><input type="radio" name="ayinkeifari-q11" value="c"/> دادگاه اطفال و نوجوانان</label>
+          <label class="quiz-option" data-val="d"><input type="radio" name="ayinkeifari-q11" value="d"/> دادگاه انقلاب</label>
         </div>
       </div>
       <div class="quiz-actions">
@@ -3124,6 +3325,51 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ARTICLES (مقالات) -->
+<section id="articles">
+  <div class="section-eyebrow">مقالات</div>
+  <div class="section-title">مقالات حقوقی</div>
+  <p class="section-sub">مطالب تحلیلی و آموزشی در حوزه‌های مختلف حقوق، به‌صورت مستمر به‌روزرسانی می‌شود</p>
+  <div class="articles-grid">
+    <div class="article-card">
+      <div class="article-tag">حقوق مدنی</div>
+      <h3>تفاوت دعوای حقوقی و دعوای کیفری در چیست؟</h3>
+      <p>بسیاری از افراد در تشخیص نوع دعوای خود دچار اشتباه می‌شوند. در این مقاله با معیارهای اصلی تفکیک دعاوی حقوقی از کیفری و مرجع صالح برای هر یک آشنا می‌شوید.</p>
+      <div class="article-meta">
+        <span>⏱ ۵ دقیقه مطالعه</span>
+        <span>📂 حقوق مدنی</span>
+      </div>
+    </div>
+    <div class="article-card">
+      <div class="article-tag">حقوق قراردادها</div>
+      <h3>نکات کلیدی پیش از امضای هر قرارداد</h3>
+      <p>بررسی شروط ضمن عقد، مشخصات طرفین، تاریخ و امضا، و راهکارهایی برای پیشگیری از دعاوی آینده در زمان تنظیم قرارداد.</p>
+      <div class="article-meta">
+        <span>⏱ ۴ دقیقه مطالعه</span>
+        <span>📂 قراردادها</span>
+      </div>
+    </div>
+    <div class="article-card">
+      <div class="article-tag">حقوق خانواده</div>
+      <h3>نحوه تقسیم ارث بین وراث طبقه اول</h3>
+      <p>توضیح ساده و کاربردی درباره سهم‌الارث همسر، فرزندان و والدین متوفی بر اساس مقررات قانون مدنی ایران.</p>
+      <div class="article-meta">
+        <span>⏱ ۶ دقیقه مطالعه</span>
+        <span>📂 خانواده و ارث</span>
+      </div>
+    </div>
+    <div class="article-card">
+      <div class="article-tag">حقوق کیفری</div>
+      <h3>چک برگشتی؛ مسیر شکایت و پیامدهای آن</h3>
+      <p>آشنایی با مراحل شکایت از صادرکننده چک بلامحل، تفاوت مسیر حقوقی و کیفری، و نکاتی که دارنده چک باید بداند.</p>
+      <div class="article-meta">
+        <span>⏱ ۵ دقیقه مطالعه</span>
+        <span>📂 اسناد تجاری</span>
+      </div>
+    </div>
   </div>
 </section>
 
