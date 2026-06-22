@@ -681,6 +681,93 @@
       padding: 2.5rem 1.5rem;
     }
 
+    /* ── LEGAL GAME ── */
+    #legalgame { background: var(--surface); }
+    .game-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.2rem 1.8rem;
+      max-width: 640px;
+      position: relative;
+      overflow: hidden;
+    }
+    .game-screen { display: none; }
+    .game-screen.active { display: block; }
+
+    .game-start-icon { font-size: 2.6rem; text-align: center; margin-bottom: 0.8rem; }
+    .game-start-title { font-size: 1.25rem; font-weight: 800; color: var(--white); text-align: center; margin-bottom: 0.6rem; }
+    .game-start-desc { font-size: 0.9rem; color: var(--muted); font-weight: 300; text-align: center; max-width: 440px; margin: 0 auto 1.8rem; line-height: 1.7; }
+    .game-modes { display: flex; flex-direction: column; gap: 0.8rem; }
+    .game-mode-btn {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1rem 1.3rem; cursor: pointer; width: 100%;
+      font-family: 'Vazirmatn', sans-serif; transition: all 0.2s;
+    }
+    .game-mode-btn:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .game-mode-name { font-size: 1rem; font-weight: 700; color: var(--white); }
+    .game-mode-meta { font-size: 0.8rem; color: var(--gold); font-weight: 600; }
+    .game-highscore-line { text-align: center; margin-top: 1.6rem; font-size: 0.85rem; color: var(--muted); }
+    .game-highscore-line strong { color: var(--gold); }
+
+    .game-topbar { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.9rem; flex-wrap: wrap; }
+    .game-hearts { font-size: 1rem; letter-spacing: 0.15em; }
+    .game-progress { font-size: 0.82rem; color: var(--muted); font-weight: 600; }
+    .game-score { font-size: 0.95rem; color: var(--gold); font-weight: 800; }
+    .game-combo {
+      text-align: center; font-size: 0.95rem; font-weight: 800; color: var(--gold);
+      height: 1.4rem; margin-bottom: 0.4rem; opacity: 0; transition: opacity 0.2s;
+    }
+    .game-combo.show { opacity: 1; animation: gameComboPop 0.35s ease; }
+
+    .game-timerbar { width: 100%; height: 6px; background: var(--surface); border-radius: 100px; overflow: hidden; margin-bottom: 1.4rem; }
+    .game-timerfill { height: 100%; width: 100%; background: var(--gold); border-radius: 100px; transition: width 1s linear, background 0.3s linear; }
+
+    .game-question-box { animation: gameFadeIn 0.35s ease; }
+    .game-qtext { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 1.3rem; line-height: 1.7; text-align: center; }
+    .game-options { display: flex; flex-direction: column; gap: 0.7rem; }
+    .game-option {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.9rem 1.2rem; font-family: 'Vazirmatn', sans-serif; font-size: 0.9rem; color: var(--text);
+      cursor: pointer; text-align: right; width: 100%; transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+    .game-option:hover { border-color: var(--gold-dim); }
+    .game-option.correct { border-color: #4CAF7D; background: rgba(76,175,125,0.15); color: var(--white); animation: gamePulseGreen 0.4s ease; }
+    .game-option.incorrect { border-color: #D9534F; background: rgba(217,83,79,0.15); animation: gameShake 0.4s ease; }
+    .game-option.disabled { pointer-events: none; opacity: 0.75; }
+
+    .game-feedback {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-size: 1.6rem; font-weight: 900; color: var(--gold); pointer-events: none; opacity: 0; z-index: 5;
+    }
+    .game-feedback.show { animation: gameFeedbackPop 0.9s ease forwards; }
+
+    .game-screen-end { text-align: center; }
+    .game-end-icon { font-size: 2.8rem; margin-bottom: 0.6rem; }
+    .game-end-score { font-size: 3rem; font-weight: 900; color: var(--gold); line-height: 1; }
+    .game-end-msg { font-size: 0.95rem; color: var(--text); margin-top: 0.6rem; font-weight: 600; }
+    .game-end-highscore { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
+    .game-end-actions { display: flex; gap: 0.8rem; justify-content: center; margin-top: 1.8rem; flex-wrap: wrap; }
+    .game-btn {
+      background: var(--gold); color: #000; border: none; border-radius: 8px;
+      padding: 0.85rem 1.8rem; font-family: 'Vazirmatn', sans-serif; font-size: 0.92rem; font-weight: 700;
+      cursor: pointer; transition: opacity 0.2s;
+    }
+    .game-btn:hover { opacity: 0.85; }
+    .game-btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .game-btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    @keyframes gameFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes gameShake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+    @keyframes gamePulseGreen { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+    @keyframes gameComboPop { 0% { transform: scale(0.7); } 60% { transform: scale(1.15); } 100% { transform: scale(1); } }
+    @keyframes gameFeedbackPop {
+      0% { opacity: 0; transform: translate(-50%, -40%) scale(0.6); }
+      30% { opacity: 1; transform: translate(-50%, -60%) scale(1.1); }
+      100% { opacity: 0; transform: translate(-50%, -90%) scale(1); }
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -692,6 +779,8 @@
       .lawbank-categories { gap: 0.5rem; }
       .lawbank-cat-btn { padding: 0.5rem 1rem; font-size: 0.82rem; }
       .lawbank-search { flex-direction: column; }
+      .game-card { padding: 1.6rem 1.2rem; }
+      .game-end-score { font-size: 2.4rem; }
     }
   </style>
 </head>
@@ -704,6 +793,7 @@
     <li><a href="#services">خدمات</a></li>
     <li><a href="#courses">دوره‌ها</a></li>
     <li><a href="#quiz">تست‌زنی</a></li>
+    <li><a href="#legalgame">بازی حقوقی</a></li>
     <li><a href="#lawbank">بانک قوانین</a></li>
     <li><a href="#movies">فیلم‌های حقوقی</a></li>
     <li><a href="#tips">نکات حقوقی</a></li>
@@ -1837,6 +1927,69 @@
         <div class="quiz-score-text" id="scoretext-ayinkeifari"></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- LEGAL GAME -->
+<section id="legalgame">
+  <div class="section-eyebrow">بازی حقوقی</div>
+  <div class="section-title">مأموریت وکیل ⚖️</div>
+  <p class="section-sub">دانش حقوقی‌تان را در یک چالش پرهیجان و زمان‌دار امتحان کنید؛ سوالات از تمام بخش‌های تست‌زنی سایت به‌صورت تصادفی انتخاب می‌شوند و هرچه زنجیره پاسخ‌های درست‌تان بیشتر شود، امتیاز بیشتری می‌گیرید!</p>
+
+  <div class="game-card" id="game-card">
+
+    <!-- START SCREEN -->
+    <div class="game-screen game-screen-start active" id="game-screen-start">
+      <div class="game-start-icon">🎯</div>
+      <h3 class="game-start-title">آماده‌ای وارد دادگاه شوی؟</h3>
+      <p class="game-start-desc">یک حالت را انتخاب کن. هر پاسخ نادرست یا اتمام زمان، یک «جان» از تو می‌گیرد و هر زنجیره پاسخ صحیح، امتیازت را چند برابر می‌کند.</p>
+      <div class="game-modes">
+        <button class="game-mode-btn" onclick="gameStart('easy')">
+          <span class="game-mode-name">کارآموز</span>
+          <span class="game-mode-meta">۱۰ سوال · ۲۰ ثانیه</span>
+        </button>
+        <button class="game-mode-btn" onclick="gameStart('medium')">
+          <span class="game-mode-name">وکیل</span>
+          <span class="game-mode-meta">۱۵ سوال · ۱۵ ثانیه</span>
+        </button>
+        <button class="game-mode-btn" onclick="gameStart('hard')">
+          <span class="game-mode-name">قاضی</span>
+          <span class="game-mode-meta">۲۰ سوال · ۱۰ ثانیه</span>
+        </button>
+      </div>
+      <div class="game-highscore-line" id="game-highscore-line"></div>
+    </div>
+
+    <!-- PLAY SCREEN -->
+    <div class="game-screen game-screen-play" id="game-screen-play">
+      <div class="game-topbar">
+        <div class="game-hearts" id="game-hearts">❤️❤️❤️</div>
+        <div class="game-progress" id="game-progress">سوال ۱ از ۱۰</div>
+        <div class="game-score" id="game-score">امتیاز: ۰</div>
+      </div>
+      <div class="game-combo" id="game-combo"></div>
+      <div class="game-timerbar"><div class="game-timerfill" id="game-timerfill"></div></div>
+
+      <div class="game-question-box" id="game-question-box">
+        <div class="game-qtext" id="game-qtext"></div>
+        <div class="game-options" id="game-options"></div>
+      </div>
+
+      <div class="game-feedback" id="game-feedback"></div>
+    </div>
+
+    <!-- END SCREEN -->
+    <div class="game-screen game-screen-end" id="game-screen-end">
+      <div class="game-end-icon" id="game-end-icon">🏆</div>
+      <div class="game-end-score" id="game-end-score">۰</div>
+      <div class="game-end-msg" id="game-end-msg"></div>
+      <div class="game-end-highscore" id="game-end-highscore"></div>
+      <div class="game-end-actions">
+        <button class="game-btn" onclick="gameRestartSameMode()">دوباره بازی کن</button>
+        <button class="game-btn game-btn-secondary" onclick="gameBackToStart()">تغییر حالت بازی</button>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -3007,6 +3160,262 @@
       }
     }
   }
+
+  /* ===== LEGAL GAME: مأموریت وکیل ===== */
+  var gameSettings = {
+    easy:   { count: 10, seconds: 20, label: 'کارآموز' },
+    medium: { count: 15, seconds: 15, label: 'وکیل' },
+    hard:   { count: 20, seconds: 10, label: 'قاضی' }
+  };
+  var gameState = {
+    mode: null,
+    questions: [],
+    index: 0,
+    score: 0,
+    lives: 3,
+    combo: 0,
+    timer: null,
+    timeLeft: 0,
+    totalTime: 0
+  };
+
+  function gameCollectQuestionPool() {
+    var pool = [];
+    document.querySelectorAll('.quiz-question').forEach(function(q) {
+      var correctVal = q.getAttribute('data-correct');
+      var qTextEl = q.querySelector('.quiz-q-text');
+      var optionEls = q.querySelectorAll('.quiz-option');
+      if (!correctVal || !qTextEl || optionEls.length < 2) return;
+
+      var options = [];
+      optionEls.forEach(function(opt) {
+        var val = opt.getAttribute('data-val');
+        var text = opt.textContent.trim();
+        if (val && text) options.push({ val: val, text: text });
+      });
+      if (options.length < 2) return;
+
+      var hasCorrect = options.some(function(o) { return o.val === correctVal; });
+      if (!hasCorrect) return;
+
+      pool.push({ text: qTextEl.textContent.trim(), options: options, correct: correctVal });
+    });
+    return pool;
+  }
+
+  function gameShuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+  }
+
+  function gameShowScreen(name) {
+    document.querySelectorAll('.game-screen').forEach(function(s) { s.classList.remove('active'); });
+    document.getElementById('game-screen-' + name).classList.add('active');
+  }
+
+  function gameUpdateHighscoreLine() {
+    var hs = parseInt(localStorage.getItem('atiyehLegalGameHighscore') || '0', 10);
+    var el = document.getElementById('game-highscore-line');
+    if (el) {
+      el.innerHTML = hs > 0
+        ? 'بهترین امتیاز شما: <strong>' + hs.toLocaleString('fa-IR') + '</strong>'
+        : 'هنوز بازی نکرده‌اید — اولین امتیازتان را ثبت کنید!';
+    }
+  }
+
+  function gameStart(mode) {
+    var settings = gameSettings[mode];
+    if (!settings) return;
+    var pool = gameCollectQuestionPool();
+    if (pool.length === 0) {
+      alert('در حال حاضر سوالی برای بازی موجود نیست.');
+      return;
+    }
+    var count = Math.min(settings.count, pool.length);
+    gameState = {
+      mode: mode,
+      questions: gameShuffle(pool).slice(0, count),
+      index: 0,
+      score: 0,
+      lives: 3,
+      combo: 0,
+      timer: null,
+      timeLeft: settings.seconds,
+      totalTime: settings.seconds
+    };
+    gameShowScreen('play');
+    gameRenderQuestion();
+  }
+
+  function gameRenderHearts() {
+    var full = '❤️'.repeat(Math.max(gameState.lives, 0));
+    var empty = '🖤'.repeat(Math.max(3 - gameState.lives, 0));
+    document.getElementById('game-hearts').textContent = full + empty;
+  }
+
+  function gameRenderQuestion() {
+    var total = gameState.questions.length;
+    var q = gameState.questions[gameState.index];
+
+    document.getElementById('game-progress').textContent =
+      'سوال ' + (gameState.index + 1).toLocaleString('fa-IR') + ' از ' + total.toLocaleString('fa-IR');
+    document.getElementById('game-score').textContent = 'امتیاز: ' + gameState.score.toLocaleString('fa-IR');
+    gameRenderHearts();
+
+    var comboEl = document.getElementById('game-combo');
+    if (gameState.combo >= 2) {
+      comboEl.textContent = '🔥 ترکیب ' + gameState.combo.toLocaleString('fa-IR') + ' پاسخ درست!';
+      comboEl.classList.add('show');
+    } else {
+      comboEl.classList.remove('show');
+      comboEl.textContent = '';
+    }
+
+    document.getElementById('game-qtext').textContent = q.text;
+
+    var optionsBox = document.getElementById('game-options');
+    optionsBox.innerHTML = '';
+    q.options.forEach(function(opt) {
+      var btn = document.createElement('button');
+      btn.className = 'game-option';
+      btn.setAttribute('data-val', opt.val);
+      btn.textContent = opt.text;
+      btn.onclick = function() { gameAnswer(opt.val); };
+      optionsBox.appendChild(btn);
+    });
+
+    var qBox = document.getElementById('game-question-box');
+    qBox.style.animation = 'none';
+    void qBox.offsetWidth;
+    qBox.style.animation = '';
+
+    gameStartTimer();
+  }
+
+  function gameStartTimer() {
+    clearInterval(gameState.timer);
+    gameState.timeLeft = gameState.totalTime;
+    var fill = document.getElementById('game-timerfill');
+    fill.style.transition = 'none';
+    fill.style.width = '100%';
+    fill.style.background = 'var(--gold)';
+    void fill.offsetWidth;
+    fill.style.transition = 'width 1s linear, background 0.3s linear';
+
+    gameState.timer = setInterval(function() {
+      gameState.timeLeft -= 1;
+      var pct = Math.max(0, (gameState.timeLeft / gameState.totalTime) * 100);
+      fill.style.width = pct + '%';
+      if (pct <= 30) { fill.style.background = '#D9534F'; }
+      else if (pct <= 60) { fill.style.background = '#E0B84C'; }
+      if (gameState.timeLeft <= 0) {
+        clearInterval(gameState.timer);
+        gameAnswer(null);
+      }
+    }, 1000);
+  }
+
+  function gameAnswer(selectedVal) {
+    clearInterval(gameState.timer);
+    var q = gameState.questions[gameState.index];
+    var optionsBox = document.getElementById('game-options');
+    var buttons = optionsBox.querySelectorAll('.game-option');
+    var isCorrect = selectedVal === q.correct;
+
+    buttons.forEach(function(btn) {
+      btn.classList.add('disabled');
+      if (btn.getAttribute('data-val') === q.correct) {
+        btn.classList.add('correct');
+      } else if (btn.getAttribute('data-val') === selectedVal) {
+        btn.classList.add('incorrect');
+      }
+    });
+
+    var feedback = document.getElementById('game-feedback');
+
+    if (isCorrect) {
+      gameState.combo += 1;
+      var multiplier = Math.min(gameState.combo, 5);
+      var gained = 10 * multiplier;
+      gameState.score += gained;
+      feedback.textContent = '+' + gained.toLocaleString('fa-IR');
+      feedback.style.color = '#4CAF7D';
+    } else {
+      gameState.combo = 0;
+      gameState.lives -= 1;
+      feedback.textContent = selectedVal === null ? 'وقت تمام شد!' : 'پاسخ نادرست';
+      feedback.style.color = '#D9534F';
+    }
+
+    feedback.classList.remove('show');
+    void feedback.offsetWidth;
+    feedback.classList.add('show');
+
+    document.getElementById('game-score').textContent = 'امتیاز: ' + gameState.score.toLocaleString('fa-IR');
+    gameRenderHearts();
+
+    setTimeout(function() {
+      if (gameState.lives <= 0 || gameState.index + 1 >= gameState.questions.length) {
+        gameEnd();
+      } else {
+        gameState.index += 1;
+        gameRenderQuestion();
+      }
+    }, 1100);
+  }
+
+  function gameEnd() {
+    clearInterval(gameState.timer);
+    var answered = gameState.index + 1;
+    var percent = Math.round((gameState.score / (answered * 50)) * 100);
+    if (!isFinite(percent) || percent < 0) percent = 0;
+
+    var hs = parseInt(localStorage.getItem('atiyehLegalGameHighscore') || '0', 10);
+    var isNewHighscore = gameState.score > hs;
+    if (isNewHighscore) {
+      localStorage.setItem('atiyehLegalGameHighscore', String(gameState.score));
+      hs = gameState.score;
+    }
+
+    var icon, msg;
+    if (gameState.lives <= 0) {
+      icon = '⚖️';
+      msg = 'جلسه دادگاه ناتمام ماند! جان‌هایتان به پایان رسید، اما تجربه ارزشمندی کسب کردید.';
+    } else if (percent >= 85) {
+      icon = '🏆';
+      msg = 'عالی! عملکرد شما در سطح یک حقوقدان حرفه‌ای بود.';
+    } else if (percent >= 60) {
+      icon = '⚖️';
+      msg = 'خوب بود! با کمی تمرین بیشتر، استاد این حوزه می‌شوید.';
+    } else {
+      icon = '📚';
+      msg = 'شروع خوبی بود! کمی بیشتر در بخش تست‌زنی و بانک قوانین مطالعه کنید.';
+    }
+
+    document.getElementById('game-end-icon').textContent = icon;
+    document.getElementById('game-end-score').textContent = gameState.score.toLocaleString('fa-IR');
+    document.getElementById('game-end-msg').textContent = msg;
+    document.getElementById('game-end-highscore').textContent = isNewHighscore
+      ? '🎉 رکورد جدید ثبت شد!'
+      : 'بهترین امتیاز شما: ' + hs.toLocaleString('fa-IR');
+
+    gameShowScreen('end');
+  }
+
+  function gameRestartSameMode() {
+    if (gameState.mode) gameStart(gameState.mode);
+  }
+
+  function gameBackToStart() {
+    gameUpdateHighscoreLine();
+    gameShowScreen('start');
+  }
+
+  gameUpdateHighscoreLine();
 
 </script>
 
